@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +19,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private UUID id;
-    //manager_id
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
     @Column(name = "name")
     private String name;
     @Column(name = "status")
@@ -33,4 +36,8 @@ public class Product {
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agreement_account_id")
+    private List<Agreement> agreementList;
+
 }

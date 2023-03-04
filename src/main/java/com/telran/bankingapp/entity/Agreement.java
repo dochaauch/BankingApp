@@ -18,8 +18,14 @@ public class Agreement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private UUID id;
-    //account_id
-    //product_id
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private Product product;
     @Column(name = "interest_rate")
     private double interestRate;
     @Column(name = "status")
@@ -29,5 +35,5 @@ public class Agreement {
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt; //updated_at
+    private LocalDateTime updatedAt;
 }

@@ -21,7 +21,7 @@ public class Client {
     private UUID id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Column(name = "manager_id")
+    @JoinColumn(name = "manager_id")
     private Manager manager;
 
     @Column(name = "status")

@@ -35,4 +35,7 @@ public class Manager {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
     private List<Client> clientList;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager_id")
+    private List<Product> productList;
+
 }

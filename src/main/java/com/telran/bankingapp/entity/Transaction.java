@@ -18,11 +18,17 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private UUID id;
-    //debit_account_id;
-    //credit_account_id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "debit_account_id")
+    private Account debitAccount;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "credit_account_id")
+    private Account creditAccount;
     @Column(name = "type")
     private int type;
-    @Column(name = "amoun")
+    @Column(name = "amount")
     private double amount;
     @Column(name = "description")
     private String description;

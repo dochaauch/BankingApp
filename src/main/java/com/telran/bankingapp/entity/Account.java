@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -37,4 +38,9 @@ public class Account {
         private LocalDateTime createdAt;
         @Column(name = "updated_at")
         private LocalDateTime updatedAt;
+
+        @OneToMany(cascade = CascadeType.ALL, mappedBy = "agreement_account_id")
+        private List<Agreement> agreements;
+
+
 }
