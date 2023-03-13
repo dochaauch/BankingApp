@@ -38,7 +38,7 @@ public class Product {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agreement")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
     private List<Agreement> agreementList;
 
     @Override
