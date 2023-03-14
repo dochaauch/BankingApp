@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.ClientStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,12 +23,13 @@ public class Client {
     @Column(name = "id")
     private UUID id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_id")
     private Manager manager;
 
     @Column(name = "status")
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private ClientStatus status;
     @Column(name = "tax_code")
     private String taxCode;
     @Column(name = "first_name")
@@ -44,8 +47,8 @@ public class Client {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private List<Account> accountList;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "client")
+    private Set<Account> accountList;
 
     @Override
     public boolean equals(Object o) {

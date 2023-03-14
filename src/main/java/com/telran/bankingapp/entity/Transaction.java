@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,15 +21,16 @@ public class Transaction {
     @Column(name = "id")
     private UUID id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "debit_account_id")
     private Account debitAccount;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "credit_account_id")
     private Account creditAccount;
     @Column(name = "type")
-    private int type;
+    @Enumerated(EnumType.STRING)
+    private TransactionType type;
     @Column(name = "amount")
     private double amount;
     @Column(name = "description")

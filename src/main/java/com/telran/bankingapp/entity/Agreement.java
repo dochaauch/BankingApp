@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.AccountProductStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,18 +21,19 @@ public class Agreement {
     @Column(name = "id")
     private UUID id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "product_id")
     private Product product;
 
     @Column(name = "interest_rate")
     private double interestRate;
     @Column(name = "status")
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private AccountProductStatus status;
     @Column(name = "sum")
     private double sum;
     @Column(name = "created_at")

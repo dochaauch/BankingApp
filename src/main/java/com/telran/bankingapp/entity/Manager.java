@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.ManagerStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -27,17 +29,18 @@ public class Manager {
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "status")
-    private int status;
+    @Enumerated(EnumType.STRING)
+    private ManagerStatus status;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
-    private List<Client> clientList;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "manager")
+    private Set<Client> clientList;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
-    private List<Product> productList;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "manager")
+    private Set<Product> productList;
 
     @Override
     public boolean equals(Object o) {

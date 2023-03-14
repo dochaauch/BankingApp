@@ -1,6 +1,8 @@
 package com.telran.bankingapp.entity;
 
 import com.telran.bankingapp.entity.enums.AccountStatus;
+import com.telran.bankingapp.entity.enums.AccountType;
+import com.telran.bankingapp.entity.enums.CurrencyType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -29,27 +32,29 @@ public class Account {
         @Column(name = "name")
         private String name;
         @Column(name = "type")
-        private int type;
+        @Enumerated(EnumType.STRING)
+        private AccountType type;
         @Column(name = "status")
         @Enumerated(EnumType.STRING)
         private AccountStatus status;
         @Column(name = "balance")
         private double balance;
         @Column(name = "currency_code")
-        private int currencyCode;
+        @Enumerated(EnumType.STRING)
+        private CurrencyType currencyCode;
         @Column(name = "created_at")
         private LocalDateTime createdAt;
         @Column(name = "updated_at")
         private LocalDateTime updatedAt;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "account")
-        private List<Agreement> agreementList;
+        @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "account")
+        private Set<Agreement> agreementList;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "debitAccount")
-        private List<Transaction> debitTransactionList;
+        @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "debitAccount")
+        private Set<Transaction> debitTransactionList;
 
-        @OneToMany(cascade = CascadeType.ALL, mappedBy = "creditAccount")
-        private List<Transaction> creditTransactionList;
+        @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "creditAccount")
+        private Set<Transaction> creditTransactionList;
 
         @Override
         public boolean equals(Object o) {
