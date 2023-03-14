@@ -5,24 +5,33 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet author="j.jakobson" id="create manager table">
-        <preConditions onFail="CONTINUE" onFailMessage="Table products already exists">
+        <preConditions onFail="CONTINUE" onFailMessage="Table manager already exists">
             <not>
                 <tableExists tableName="manager"/>
             </not>
         </preConditions>
         <createTable tableName="manager">
-            <column name="id" type="uuid">
+            <column name="id" type="binary(16)">
                 <constraints primaryKey="true"/>
             </column>
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
-            <column name="status" type="int"/>
-            <column name="created_at" type="datetime" defaultValueDate="CURRENT_TIMESTAMP"/>
-            <column name="updated_at" type="datetime"/>
+            <column name="status" type="tinyint(1)"/>
+            <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp">
+                    <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 
     <changeSet author="j.jakobson" id="create-client-table">
+        <preConditions onFail="CONTINUE" onFailMessage="Table client already exists">
+            <not>
+                <tableExists tableName="client"/>
+            </not>
+        </preConditions>
         <createTable tableName="client">
             <column name="id" type="uuid">
                 <constraints primaryKey="true" nullable="false"/>
@@ -40,6 +49,9 @@
             <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP"/>
             <column name="updated_at" type="timestamp"/>
         </createTable>
+        <addForeignKeyConstraint baseTableName="client" baseColumnNames="manager_id"
+                                 constraintName="fk_manager_id_client"
+                                 referencedTableName="manager" referencedColumnNames="id"/>
     </changeSet>
 
     <changeSet author="j.jakobson" id="create account table" >
@@ -53,7 +65,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="client_id" type="uuid">
-                <constraints nullable="false"/>
+                <constraints foreignKeyName="fk_client_account" referencedTableName="client"
+                             referencedColumnNames="id"/>
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>

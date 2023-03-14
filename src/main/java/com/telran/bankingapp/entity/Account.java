@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.AccountStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,8 @@ public class Account {
         @Column(name = "type")
         private int type;
         @Column(name = "status")
-        private int status;
+        @Enumerated(EnumType.STRING)
+        private AccountStatus status;
         @Column(name = "balance")
         private double balance;
         @Column(name = "currency_code")
