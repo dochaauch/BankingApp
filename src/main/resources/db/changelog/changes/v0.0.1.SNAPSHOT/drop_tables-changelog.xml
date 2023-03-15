@@ -4,6 +4,33 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
+    <changeSet author="j.jakobson" id="drop agreement table">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="agreement"/>
+        </preConditions>
+        <dropTable tableName="agreement"/>
+    </changeSet>
+
+    <changeSet author="j.jakobson" id="drop product table">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="product"/>
+        </preConditions>
+        <dropTable tableName="product"/>
+    </changeSet>
+
+    <changeSet author="j.jakobson" id="drop transaction table">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="transaction"/>
+        </preConditions>
+        <dropTable tableName="transaction"/>
+    </changeSet>
+
+    <changeSet author="j.jakobson" id="drop account table 01">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="account"/>
+        </preConditions>
+        <dropTable tableName="account"/>
+    </changeSet>
 
     <changeSet author="j.jakobson" id="drop client table 01">
         <preConditions onFail="MARK_RAN">
@@ -12,18 +39,11 @@
         <dropTable tableName="client"/>
     </changeSet>
 
-    <changeSet author="j.jakobson" id="drop manager table 02">
+    <changeSet author="j.jakobson" id="drop manager table 001">
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="manager"/>
         </preConditions>
         <dropTable tableName="manager"/>
-    </changeSet>
-
-    <changeSet author="j.jakobson" id="drop account table 01">
-        <preConditions onFail="MARK_RAN">
-            <tableExists tableName="account"/>
-        </preConditions>
-        <dropTable tableName="account"/>
     </changeSet>
 
 </databaseChangeLog>

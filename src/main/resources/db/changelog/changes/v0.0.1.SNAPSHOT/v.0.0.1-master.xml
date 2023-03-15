@@ -6,5 +6,11 @@
 
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/drop_tables-changelog.xml"/>
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/create_tables-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_manager-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_client-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_account-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_product-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_agreement-changelog.xml"/>
+    <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_transaction-changelog.xml"/>
 
 </databaseChangeLog>

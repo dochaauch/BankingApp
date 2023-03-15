@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet author="j.jakobson" id="create manager table">
+    <changeSet author="j.jakobson" id="create manager table 001">
         <preConditions onFail="CONTINUE" onFailMessage="Table manager already exists">
             <not>
                 <tableExists tableName="manager"/>
@@ -54,7 +54,7 @@
                                  referencedTableName="manager" referencedColumnNames="id"/>
     </changeSet>
 
-    <changeSet author="j.jakobson" id="create account table" >
+    <changeSet author="j.jakobson" id="create account table 001" >
         <preConditions onFail="CONTINUE" onFailMessage="Table products already exists">
             <not>
                 <tableExists tableName="account"/>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="insert account data" author="j.jakobson">
+        <insert tableName="account">
+            <column name="id">1</column>
+            <column name="client_id">1</column>
+            <column name="name">Checking Account</column>
+            <column name="type">1</column>
+            <column name="status">1</column>
+            <column name="balance">1000.00</column>
+            <column name="currency_code">4</column>
+            <column name="created_at">2023-03-14 00:00:00</column>
+            <column name="updated_at">2023-03-14 00:00:00</column>
+        </insert>
+        <insert tableName="account">
+            <column name="id">2</column>
+            <column name="client_id">1</column>
+            <column name="name">Savings Account</column>
+            <column name="type">2</column>
+            <column name="status">1</column>
+            <column name="balance">5000.00</column>
+            <column name="currency_code">2</column>
+            <column name="created_at">2023-03-14 00:00:00</column>
+            <column name="updated_at">2023-03-14 00:00:00</column>
+        </insert>
+        <insert tableName="account">
+            <column name="id">3</column>
+            <column name="client_id">2</column>
+            <column name="name">Investment Account</column>
+            <column name="type">3</column>
+            <column name="status">1</column>
+            <column name="balance">25000.00</column>
+            <column name="currency_code">1</column>
+            <column name="created_at">2023-03-14 00:00:00</column>
+            <column name="updated_at">2023-03-14 00:00:00</column>
+        </insert>
+        <insert tableName="account">
+            <column name="id">4</column>
+            <column name="client_id">3</column>
+            <column name="name">Checking Account</column>
+            <column name="type">1</column>
+            <column name="status">1</column>
+            <column name="balance">500.00</column>
+            <column name="currency_code">2</column>
+            <column name="created_at">2023-03-14 00:00:00</column>
+            <column name="updated_at">2023-03-14 00:00:00</column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
