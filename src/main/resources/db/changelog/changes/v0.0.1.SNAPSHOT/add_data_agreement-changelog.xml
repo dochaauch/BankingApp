@@ -8,7 +8,7 @@
         <insert tableName="agreement">
             <column name="id">f9b60ff8-0b6c-4c18-8be2-91a84a19a77d</column>
             <column name="account_id">4</column>
-            <column name="product_id">1f0d7f3b-b29e-4ccf-a0e7-7eb873b1cf0c</column>
+            <column name="product_id">2f0d7f3b-b29e-4ccf-a0e7-7eb873b1cf0c</column>
             <column name="interest_rate">2.5</column>
             <column name="status">1</column>
             <column name="sum">5000.00</column>
@@ -16,7 +16,7 @@
         <insert tableName="agreement">
             <column name="id">8f045d20-5691-4235-8c02-6f5f5d5d5eb3</column>
             <column name="account_id">1</column>
-            <column name="product_id">1f0d7f3b-b29e-4ccf-a0e7-7eb873b1cf0c</column>
+            <column name="product_id">20dca35f-4b4a-4f25-9aa9-2efaf1edf522</column>
             <column name="interest_rate">1.5</column>
             <column name="status">0</column>
             <column name="sum">30000.00</column>
@@ -24,7 +24,7 @@
         <insert tableName="agreement">
             <column name="id">53c7c11d-245a-4c5e-8765-982d5f5fa5e7</column>
             <column name="account_id">2</column>
-            <column name="product_id">c0dca35f-4b4a-4f25-9aa9-2efaf1edf522</column>
+            <column name="product_id">29b35b3c-b3c3-47aa-95b1-4a4a3c3efea9</column>
             <column name="interest_rate">3.0</column>
             <column name="status">1</column>
             <column name="sum">10000.00</column>
@@ -32,7 +32,7 @@
         <insert tableName="agreement">
             <column name="id">c75f1251-2cc9-449c-8f53-11a3f3d31f81</column>
             <column name="account_id">3</column>
-            <column name="product_id">d9b35b3c-b3c3-47aa-95b1-4a4a3c3efea9</column>
+            <column name="product_id">2f8c8176-2b87-4875-9f46-8a0a7fcd6c64</column>
             <column name="interest_rate">2.0</column>
             <column name="status">0</column>
             <column name="sum">20000.00</column>

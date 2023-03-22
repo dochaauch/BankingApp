@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="add product data 01" author="j.jakobson">
+    <changeSet id="add product data 02" author="j.jakobson">
 
         <delete tableName="product"/>
 
