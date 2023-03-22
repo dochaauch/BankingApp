@@ -13,7 +13,7 @@
             <column name="manager_id">d6d35f37-80e8-4db9-bb2e-7d1c38dd277a</column>
             <column name="name">Savings Account</column>
             <column name="status">1</column>
-            <column name="currency_code">1</column>
+            <column name="currency_code">EUR</column>
             <column name="interest_rate">2.5</column>
             <column name="limit">10000</column>
             <column name="created_at">2023-03-14 00:00:00</column>
@@ -24,7 +24,7 @@
             <column name="manager_id">d6d35f37-80e8-4db9-bb2e-7d1c38dd277a</column>
             <column name="name">Checking Account</column>
             <column name="status">1</column>
-            <column name="currency_code">2</column>
+            <column name="currency_code">RUB</column>
             <column name="interest_rate">0.0</column>
             <column name="limit">2500</column>
             <column name="created_at">2023-03-14 00:00:00</column>
@@ -35,7 +35,7 @@
             <column name="manager_id">a7a1e41c-38b9-4d84-b711-6e81dd6a8460</column>
             <column name="name">Personal Loan</column>
             <column name="status">1</column>
-            <column name="currency_code">3</column>
+            <column name="currency_code">USD</column>
             <column name="interest_rate">5.0</column>
             <column name="limit">5000</column>
             <column name="created_at">2023-03-14 00:00:00</column>
@@ -46,7 +46,7 @@
             <column name="manager_id">a7a1e41c-38b9-4d84-b711-6e81dd6a8460</column>
             <column name="name">Credit Card</column>
             <column name="status">1</column>
-            <column name="currency_code">4</column>
+            <column name="currency_code">EUR</column>
             <column name="interest_rate">12.0</column>
             <column name="limit">2000</column>
             <column name="created_at">2023-03-14 00:00:00</column>

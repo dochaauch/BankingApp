@@ -16,7 +16,7 @@
             </column>
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
-            <column name="status" type="tinyint(1)"/>
+            <column name="status" type="varchar(50)"/>
             <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
@@ -39,7 +39,7 @@
             <column name="manager_id" type="binary(64)">
                 <constraints foreignKeyName="manager_id" references="manager(id)" nullable="false"/>
             </column>
-            <column name="status" type="tinyint(1)"/>
+            <column name="status" type="varchar(50)"/>
             <column name="tax_code" type="varchar(25)"/>
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
@@ -71,16 +71,16 @@
             <column name="name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="type" type="tinyint(1)">
+            <column name="type" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="status" type="tinyint(1)">
+            <column name="status" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="balance" type="double">
                 <constraints nullable="false"/>
             </column>
-            <column name="currency_code" type="int">
+            <column name="currency_code" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
@@ -103,10 +103,10 @@
             <column name="name" type="varchar(80)">
                 <constraints nullable="false"/>
             </column>
-            <column name="status" type="tinyint(1)">
+            <column name="status" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="currency_code" type="int">
+            <column name="currency_code" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             <column name="interest_rate" type="double">
@@ -143,7 +143,7 @@
                              referencedColumnNames="id"/>
             </column>
             <column name="interest_rate" type="double" />
-            <column name="status" type="tinyint(1)" />
+            <column name="status" type="varchar(50)" />
             <column name="sum" type="double" defaultValueNumeric="0.00"/>
             <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
                 <constraints nullable="false"/>
@@ -173,7 +173,7 @@
                 <constraints foreignKeyName="fk_credit_account_id" referencedTableName="account"
                              referencedColumnNames="id"/>
             </column>
-            <column name="type" type="tinyint(1)"/>
+            <column name="type" type="varchar(50)"/>
             <column name="amount" type="double"/>
             <column name="description" type="varchar(250)"/>
             <column name="created_at" type="timestamp" defaultValueDate="CURRENT_TIMESTAMP">
