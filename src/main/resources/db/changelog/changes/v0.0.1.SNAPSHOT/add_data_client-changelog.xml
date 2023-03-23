@@ -6,9 +6,9 @@
 
     <changeSet id="insert client data" author="j.jakobson">
         <insert tableName="client">
-            <column name="id">1</column>
-            <column name="manager_id">a7a1e41c-38b9-4d84-b711-6e81dd6a8460</column>
-            <column name="status">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('611195b6-c02b-44cd-a8a9-92a85a521262')"/>
+            <column name="manager_id" valueComputed="UUID_TO_BIN('11cf2217-b9d0-4d58-9ebb-f7f61e7206a6')" />
+            <column name="status">ACTIVE</column>
             <column name="tax_code">ABCD1234</column>
             <column name="first_name">John</column>
             <column name="last_name">Doe</column>
@@ -19,9 +19,9 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="client">
-            <column name="id">2</column>
-            <column name="manager_id">a7a1e41c-38b9-4d84-b711-6e81dd6a8460</column>
-            <column name="status">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('3e70b4a9-c9d6-4658-a8e5-e010c7a4a5f7')" />
+            <column name="manager_id" valueComputed="UUID_TO_BIN('11cf2217-b9d0-4d58-9ebb-f7f61e7206a6')" />
+            <column name="status">ACTIVE</column>
             <column name="tax_code">EFGH5678</column>
             <column name="first_name">Jane</column>
             <column name="last_name">Doe</column>
@@ -32,9 +32,9 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="client">
-            <column name="id">3</column>
-            <column name="manager_id">d6d35f37-80e8-4db9-bb2e-7d1c38dd277a</column>
-            <column name="status">0</column>
+            <column name="id" valueComputed="UUID_TO_BIN('106ebf87-6fd0-474a-af49-cb9910af7f47')"/>
+            <column name="manager_id" valueComputed="UUID_TO_BIN('e87af78c-bfeb-4a5d-b401-07f364388a21')" />
+            <column name="status">PENDING</column>
             <column name="tax_code">IJKL9012</column>
             <column name="first_name">Bob</column>
             <column name="last_name">Smith</column>
@@ -45,9 +45,9 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="client">
-            <column name="id">4</column>
-            <column name="manager_id">d6d35f37-80e8-4db9-bb2e-7d1c38dd277a</column>
-            <column name="status">0</column>
+            <column name="id" valueComputed="UUID_TO_BIN('54fcea4f-4e69-41fa-876c-f0daaa60d9ed')" />
+            <column name="manager_id" valueComputed="UUID_TO_BIN('e87af78c-bfeb-4a5d-b401-07f364388a21')" />
+            <column name="status">ACTICE</column>
             <column name="tax_code">MNOP3456</column>
             <column name="first_name">Alice</column>
             <column name="last_name">Jones</column>

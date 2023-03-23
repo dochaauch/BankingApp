@@ -6,40 +6,40 @@
 
     <changeSet author="j.jakobson" id="add transaction data">
         <insert tableName="transaction">
-            <column name="id">1</column>
-            <column name="debit_account_id">1</column>
-            <column name="credit_account_id">4</column>
-            <column name="type">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('c1a1c8cf-c8f6-41bb-8d23-c2d522f1f1f7')" />
+            <column name="debit_account_id" valueComputed="UUID_TO_BIN('dce72405-ce50-49d9-9b5b-d6cf0cd61346')" />
+            <column name="credit_account_id" valueComputed="UUID_TO_BIN('1a16c26c-3672-435f-8b49-d26462e863a0')" />
+            <column name="type">NEW</column>
             <column name="amount">100.00</column>
             <column name="description">Payment for services rendered</column>
             <column name="created_at">2023-03-01 12:00:00</column>
         </insert>
 
         <insert tableName="transaction">
-            <column name="id">2</column>
-            <column name="debit_account_id">2</column>
-            <column name="credit_account_id">3</column>
-            <column name="type">2</column>
+            <column name="id" valueComputed="UUID_TO_BIN('badd56a4-b28e-4277-a1e6-fb3dfabe2fef')" />
+            <column name="debit_account_id" valueComputed="UUID_TO_BIN('7ceb06a0-78f1-4d5a-b20a-d6c2facaf8f7')" />
+            <column name="credit_account_id" valueComputed="UUID_TO_BIN('dce72405-ce50-49d9-9b5b-d6cf0cd61346')" />
+            <column name="type">NEW</column>
             <column name="amount">50.00</column>
             <column name="description">Refund for overcharge</column>
             <column name="created_at">2023-03-15 09:30:00</column>
         </insert>
 
         <insert tableName="transaction">
-            <column name="id">3</column>
-            <column name="debit_account_id">3</column>
-            <column name="credit_account_id">4</column>
-            <column name="type">3</column>
+            <column name="id" valueComputed="UUID_TO_BIN('7a721118-294e-469b-bb91-1b98f38dae85')" />
+            <column name="debit_account_id" valueComputed="UUID_TO_BIN('7ceb06a0-78f1-4d5a-b20a-d6c2facaf8f7')" />
+            <column name="credit_account_id" valueComputed="UUID_TO_BIN('4d5f6531-59fa-4bfc-bf8c-3c95190b6d6a')" />
+            <column name="type">APPROVED</column>
             <column name="amount">75.00</column>
             <column name="description">Transfer to savings account</column>
             <column name="created_at">2023-03-03 16:45:00</column>
         </insert>
 
         <insert tableName="transaction">
-            <column name="id">4</column>
-            <column name="debit_account_id">2</column>
-            <column name="credit_account_id">1</column>
-            <column name="type">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('ef971c46-3c6f-481f-b783-7c01e0e1ed0d')" />
+            <column name="debit_account_id" valueComputed="UUID_TO_BIN('4d5f6531-59fa-4bfc-bf8c-3c95190b6d6a')" />
+            <column name="credit_account_id" valueComputed="UUID_TO_BIN('1a16c26c-3672-435f-8b49-d26462e863a0')" />
+            <column name="type">APPROVED</column>
             <column name="amount">200.00</column>
             <column name="description">Payment for rental property</column>
             <column name="created_at">2023-03-10 11:00:00</column>

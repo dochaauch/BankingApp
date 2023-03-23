@@ -7,18 +7,18 @@
     <changeSet id="insert manager data" author="j.jakobson">
 
         <insert tableName="manager">
-            <column name="id">d6d35f37-80e8-4db9-bb2e-7d1c38dd277a</column>
+            <column name="id" valueComputed="UUID_TO_BIN('11cf2217-b9d0-4d58-9ebb-f7f61e7206a6')"/>
             <column name="first_name">John</column>
             <column name="last_name">Doe</column>
-            <column name="status">1</column>
+            <column name="status">ACTIVE</column>
             <column name="created_at">2023-03-13 00:00:00</column>
             <column name="updated_at">2023-03-13 00:00:00</column>
         </insert>
         <insert tableName="manager">
-            <column name="id">a7a1e41c-38b9-4d84-b711-6e81dd6a8460</column>
+            <column name="id" valueComputed="UUID_TO_BIN('e87af78c-bfeb-4a5d-b401-07f364388a21')"/>
             <column name="first_name">Jane</column>
             <column name="last_name">Smith</column>
-            <column name="status">1</column>
+            <column name="status">ACTIVE</column>
             <column name="created_at">2023-03-14 00:00:00</column>
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>

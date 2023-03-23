@@ -6,35 +6,35 @@
 
     <changeSet author="j.jakobson" id="add agreement data">
         <insert tableName="agreement">
-            <column name="id">f9b60ff8-0b6c-4c18-8be2-91a84a19a77d</column>
-            <column name="account_id">4</column>
-            <column name="product_id">2f0d7f3b-b29e-4ccf-a0e7-7eb873b1cf0c</column>
+            <column name="id" valueComputed="UUID_TO_BIN('a67cb66e-31b1-46e0-8510-47871cccbf0c')" />
+            <column name="account_id" valueComputed="UUID_TO_BIN('dce72405-ce50-49d9-9b5b-d6cf0cd61346')" />
+            <column name="product_id" valueComputed="UUID_TO_BIN('4b49fac3-55aa-4d14-8bc0-8ec67a83e43d')" />
             <column name="interest_rate">2.5</column>
-            <column name="status">1</column>
+            <column name="status">ACTIVE</column>
             <column name="sum">5000.00</column>
         </insert>
         <insert tableName="agreement">
-            <column name="id">8f045d20-5691-4235-8c02-6f5f5d5d5eb3</column>
-            <column name="account_id">1</column>
-            <column name="product_id">20dca35f-4b4a-4f25-9aa9-2efaf1edf522</column>
+            <column name="id" valueComputed="UUID_TO_BIN('988abddc-4ade-4f08-89d7-d6d3977dcd16')" />
+            <column name="account_id" valueComputed="UUID_TO_BIN('7ceb06a0-78f1-4d5a-b20a-d6c2facaf8f7')" />
+            <column name="product_id" valueComputed="UUID_TO_BIN('aaf2bc95-1403-4831-b8b5-8969445548ec')" />
             <column name="interest_rate">1.5</column>
-            <column name="status">0</column>
+            <column name="status">ACTIVE</column>
             <column name="sum">30000.00</column>
         </insert>
         <insert tableName="agreement">
-            <column name="id">53c7c11d-245a-4c5e-8765-982d5f5fa5e7</column>
-            <column name="account_id">2</column>
-            <column name="product_id">29b35b3c-b3c3-47aa-95b1-4a4a3c3efea9</column>
+            <column name="id" valueComputed="UUID_TO_BIN('beccdd43-5dc7-40c7-a93b-93959ab51031')" />
+            <column name="account_id" valueComputed="UUID_TO_BIN('4d5f6531-59fa-4bfc-bf8c-3c95190b6d6a')" />
+            <column name="product_id" valueComputed="UUID_TO_BIN('4b49fac3-55aa-4d14-8bc0-8ec67a83e43d')" />
             <column name="interest_rate">3.0</column>
-            <column name="status">1</column>
+            <column name="status">ACTIVE</column>
             <column name="sum">10000.00</column>
         </insert>
         <insert tableName="agreement">
-            <column name="id">c75f1251-2cc9-449c-8f53-11a3f3d31f81</column>
-            <column name="account_id">3</column>
-            <column name="product_id">2f8c8176-2b87-4875-9f46-8a0a7fcd6c64</column>
+            <column name="id" valueComputed="UUID_TO_BIN('09d6547a-9b10-4804-b6be-d130c3a92828')" />
+            <column name="account_id" valueComputed="UUID_TO_BIN('1a16c26c-3672-435f-8b49-d26462e863a0')" />
+            <column name="product_id" valueComputed="UUID_TO_BIN('ab3d4b63-c13f-4aa4-8bee-d1c5ff7753e7')" />
             <column name="interest_rate">2.0</column>
-            <column name="status">0</column>
+            <column name="status">PENDING</column>
             <column name="sum">20000.00</column>
         </insert>
     </changeSet>

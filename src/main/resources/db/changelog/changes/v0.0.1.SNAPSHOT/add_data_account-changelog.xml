@@ -6,8 +6,8 @@
 
     <changeSet id="insert account data" author="j.jakobson">
         <insert tableName="account">
-            <column name="id">dce72405-ce50-49d9-9b5b-d6cf0cd61346</column>
-            <column name="client_id">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('dce72405-ce50-49d9-9b5b-d6cf0cd61346')"/>
+            <column name="client_id" valueComputed="UUID_TO_BIN('611195b6-c02b-44cd-a8a9-92a85a521262')"/>
             <column name="name">Checking_Account1</column>
             <column name="type">CURRENT</column>
             <column name="status">ACTIVE</column>
@@ -17,8 +17,8 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="account">
-            <column name="id">7ceb06a0-78f1-4d5a-b20a-d6c2facaf8f7</column>
-            <column name="client_id">1</column>
+            <column name="id" valueComputed="UUID_TO_BIN('7ceb06a0-78f1-4d5a-b20a-d6c2facaf8f7')" />
+            <column name="client_id" valueComputed="UUID_TO_BIN('611195b6-c02b-44cd-a8a9-92a85a521262')" />
             <column name="name">Savings_Account</column>
             <column name="type">CURRENT</column>
             <column name="status">ACTIVE</column>
@@ -28,8 +28,8 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="account">
-            <column name="id">4d5f6531-59fa-4bfc-bf8c-3c95190b6d6a</column>
-            <column name="client_id">2</column>
+            <column name="id" valueComputed="UUID_TO_BIN('4d5f6531-59fa-4bfc-bf8c-3c95190b6d6a')" />
+            <column name="client_id" valueComputed="UUID_TO_BIN('3e70b4a9-c9d6-4658-a8e5-e010c7a4a5f7')" />
             <column name="name">Investment_Account</column>
             <column name="type">CURRENT</column>
             <column name="status">ACTIVE</column>
@@ -39,8 +39,8 @@
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
         <insert tableName="account">
-            <column name="id">1a16c26c-3672-435f-8b49-d26462e863a0</column>
-            <column name="client_id">3</column>
+            <column name="id" valueComputed="UUID_TO_BIN('1a16c26c-3672-435f-8b49-d26462e863a0')" />
+            <column name="client_id" valueComputed="UUID_TO_BIN('106ebf87-6fd0-474a-af49-cb9910af7f47')" />
             <column name="name">Checking_Account2</column>
             <column name="type">CURRENT</column>
             <column name="status">ACTIVE</column>
