@@ -24,10 +24,16 @@ public class AccountController {
         return accountRepository.findAll();
     }
 
-    @GetMapping("/accounts/{id}")
-    public Account getAccountById(@PathVariable(value = "id") UUID accountId) {
-        return accountRepository.findById(accountId).orElseThrow(()
-                -> new ResourceNotFoundException("Account", "id", accountId));
-    }
+//    @GetMapping("/accounts/{id}")
+//    public Account getAccountById(@PathVariable(value = "id") String id) {
+//        UUID accountId = UUID.fromString(id);
+//        return accountRepository.findById(accountId).orElseThrow(()
+//                -> new ResourceNotFoundException("Account", "id", accountId));
+//    }
 
+    @GetMapping("/accounts/{id}")
+    public Account getAccountByName(@PathVariable(value = "name") String name) {
+        return accountRepository.findByName(name)
+                .orElseThrow(() -> new ResourceNotFoundException("Account", "name", name));
+    }
 }
