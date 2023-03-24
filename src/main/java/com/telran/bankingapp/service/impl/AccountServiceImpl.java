@@ -31,6 +31,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountDTO getAccountById(String uuidString) {
         UUID uuid = UUID.fromString(uuidString);
+        log.info("get account", accountRepository.findById(uuid));
         log.info("account {} ", uuid);
         return accountMapper.toDto(accountRepository.findById(uuid).get());
     }

@@ -8,6 +8,7 @@ import lombok.Value;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Value
 public class AccountDTO {
@@ -17,6 +18,7 @@ public class AccountDTO {
     String balance;
     String currencyCode;
 
+    ClientDTO client;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     LocalDateTime createdAt;
