@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.telran.bankingapp.entity.enums.AccountStatus;
 import com.telran.bankingapp.entity.enums.AccountType;
 import com.telran.bankingapp.entity.enums.CurrencyType;
@@ -7,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
