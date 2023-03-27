@@ -20,3 +20,8 @@ app:
   version: ${version}
   server:
     url: ${app.server.url}
+
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
