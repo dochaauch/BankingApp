@@ -38,21 +38,35 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerAfterCreateDTO createManager(String managerId, ManagerAfterCreateDTO dto) {
-        Manager manager = managerMapper.toManagerAfterCreate(dto);
-        manager.setId(UUID.fromString(managerId));
-        manager.setCreatedAt(LocalDateTime.now());
-        manager.setUpdatedAt(LocalDateTime.now());
-        Manager savedManager = managerRepository.save(manager);
-        return managerMapper.toDTOAfterCreate(savedManager);
+        return createOrUpdateManager(UUID.fromString(managerId), dto);
     }
-
 
     @Override
     public ManagerAfterCreateDTO createManagerEmpty(ManagerAfterCreateDTO dto) {
+        return createOrUpdateManager(UUID.randomUUID(), dto);
+    }
+
+    private ManagerAfterCreateDTO createOrUpdateManager(UUID managerId, ManagerAfterCreateDTO dto) {
         Manager manager = managerMapper.toManagerAfterCreate(dto);
-        manager.setId(UUID.randomUUID());
+        setManagerFields(manager, managerId);
+        return saveManager(manager);
+    }
+
+    private void checkManagerDoesNotExist(String firstName, String lastName) {
+        Manager existingManager = managerRepository.findByFirstNameAndLastName(firstName, lastName);
+        if (existingManager != null) {
+            throw new IllegalArgumentException("A manager with the same firstName and lastName already exists");
+        }
+    }
+
+    private void setManagerFields(Manager manager, UUID managerId) {
+        manager.setId(managerId);
         manager.setCreatedAt(LocalDateTime.now());
         manager.setUpdatedAt(LocalDateTime.now());
+    }
+
+    private ManagerAfterCreateDTO saveManager(Manager manager) {
+        checkManagerDoesNotExist(manager.getFirstName(), manager.getLastName());
         Manager savedManager = managerRepository.save(manager);
         return managerMapper.toDTOAfterCreate(savedManager);
     }
