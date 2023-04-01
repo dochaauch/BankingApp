@@ -34,4 +34,10 @@ public class ManagerController {
         return ResponseEntity.ok(createdManager);
     }
 
+    @PostMapping("/new")
+    public ResponseEntity<ManagerAfterCreateDTO> createManagerEmpty(@RequestBody ManagerAfterCreateDTO managerDto) {
+        ManagerAfterCreateDTO createdManager = managerService.createManagerEmpty(managerDto);
+        return ResponseEntity.ok(createdManager);
+    }
+
 }

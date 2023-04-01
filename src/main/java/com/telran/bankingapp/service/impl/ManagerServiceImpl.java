@@ -47,4 +47,14 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
 
+    @Override
+    public ManagerAfterCreateDTO createManagerEmpty(ManagerAfterCreateDTO dto) {
+        Manager manager = managerMapper.toManagerAfterCreate(dto);
+        manager.setId(UUID.randomUUID());
+        manager.setCreatedAt(LocalDateTime.now());
+        manager.setUpdatedAt(LocalDateTime.now());
+        Manager savedManager = managerRepository.save(manager);
+        return managerMapper.toDTOAfterCreate(savedManager);
+    }
+
 }

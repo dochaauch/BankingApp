@@ -10,21 +10,16 @@ import java.util.UUID;
 
 @Value
 @AllArgsConstructor
-
+@Setter
+@Getter
 public class ManagerAfterCreateDTO {
-    @Setter
-    @Getter
-    UUID id;
+
+    //UUID id;
     String firstName;
     String lastName;
     String status;
-
-    @Getter
-    @Setter
     LocalDateTime createdAt;
 
-    @Getter
-    @Setter
     LocalDateTime updatedAt;
 
 }

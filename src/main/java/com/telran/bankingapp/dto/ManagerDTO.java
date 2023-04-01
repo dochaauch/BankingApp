@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Value
 public class ManagerDTO {
-    String uuid;
+    String id;
     String firstName;
     String lastName;
     String status;

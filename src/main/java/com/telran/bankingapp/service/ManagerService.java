@@ -10,4 +10,5 @@ public interface ManagerService {
     ManagerDTO getManagerById(String uuid);
 
     ManagerAfterCreateDTO createManager(String managerId, ManagerAfterCreateDTO dto);
+    ManagerAfterCreateDTO createManagerEmpty(ManagerAfterCreateDTO dto);
 }
