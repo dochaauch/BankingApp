@@ -5,6 +5,7 @@ import com.telran.bankingapp.entity.enums.AccountStatus;
 import com.telran.bankingapp.entity.enums.AccountType;
 import com.telran.bankingapp.entity.enums.CurrencyType;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name="account")
 public class Account {
         @Id

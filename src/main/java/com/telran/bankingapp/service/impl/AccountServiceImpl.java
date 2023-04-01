@@ -1,14 +1,12 @@
 package com.telran.bankingapp.service.impl;
 
 import com.telran.bankingapp.dto.AccountDTO;
-import com.telran.bankingapp.dto.AccountListDto;
 import com.telran.bankingapp.entity.Account;
 import com.telran.bankingapp.mapper.AccountMapper;
 import com.telran.bankingapp.repository.AccountRepository;
 import com.telran.bankingapp.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

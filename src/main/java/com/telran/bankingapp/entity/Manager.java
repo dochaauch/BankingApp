@@ -2,13 +2,12 @@ package com.telran.bankingapp.entity;
 
 import com.telran.bankingapp.entity.enums.ManagerStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.swing.*;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -17,11 +16,12 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name="manager")
+@AllArgsConstructor
+@Table(name = "manager")
 public class Manager {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
     @Column(name = "first_name")
     private String firstName;

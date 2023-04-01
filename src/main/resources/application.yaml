@@ -21,6 +21,7 @@ app:
   server:
     url: ${app.server.url}
 
+
 server:
   error:
     include-message: always

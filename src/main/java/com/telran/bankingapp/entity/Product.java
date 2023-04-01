@@ -2,6 +2,7 @@ package com.telran.bankingapp.entity;
 
 import com.telran.bankingapp.entity.enums.ProductStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "product")
 public class Product {
     @Id
