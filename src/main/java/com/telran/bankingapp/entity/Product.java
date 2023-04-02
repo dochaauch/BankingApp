@@ -21,8 +21,7 @@ import java.util.UUID;
 @Table(name = "product")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_id")

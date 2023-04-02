@@ -1,6 +1,5 @@
 package com.telran.bankingapp.service.impl;
 
-import com.telran.bankingapp.dto.ManagerAfterCreateDTO;
 import com.telran.bankingapp.dto.ManagerDTO;
 import com.telran.bankingapp.entity.Manager;
 import com.telran.bankingapp.mapper.ManagerMapper;
@@ -36,19 +35,20 @@ public class ManagerServiceImpl implements ManagerService {
         return managerMapper.toDTO(managerRepository.findById(uuid).get());
     }
 
+
     @Override
-    public ManagerAfterCreateDTO createManager(String managerId, ManagerAfterCreateDTO dto) {
-        return createOrUpdateManager(UUID.fromString(managerId), dto);
+    public ManagerDTO createManager(UUID managerId, ManagerDTO dto) {
+        return createOrUpdateManager(managerId, dto);
     }
 
     @Override
-    public ManagerAfterCreateDTO createManagerEmpty(ManagerAfterCreateDTO dto) {
+    public ManagerDTO createManagerEmpty(ManagerDTO dto) {
         return createOrUpdateManager(UUID.randomUUID(), dto);
     }
 
-    private ManagerAfterCreateDTO createOrUpdateManager(UUID managerId, ManagerAfterCreateDTO dto) {
-        Manager manager = managerMapper.toManagerAfterCreate(dto);
-        setManagerFields(manager, managerId);
+    private ManagerDTO createOrUpdateManager(UUID managerIdL, ManagerDTO dto) {
+        Manager manager = managerMapper.toManager(dto);
+        setManagerFields(manager, managerIdL);
         return saveManager(manager);
     }
 
@@ -59,16 +59,25 @@ public class ManagerServiceImpl implements ManagerService {
         }
     }
 
+    private void checkManagerById(String id) {
+        Manager existingManager = managerRepository.findById(UUID.fromString(id)).orElse(null);
+        if (existingManager != null) {
+            throw new IllegalArgumentException("This id is already used");
+        }
+    }
+
     private void setManagerFields(Manager manager, UUID managerId) {
         manager.setId(managerId);
         manager.setCreatedAt(LocalDateTime.now());
         manager.setUpdatedAt(LocalDateTime.now());
     }
 
-    private ManagerAfterCreateDTO saveManager(Manager manager) {
+
+    private ManagerDTO saveManager(Manager manager) {
+        checkManagerById(manager.getId().toString());
         checkManagerDoesNotExist(manager.getFirstName(), manager.getLastName());
         Manager savedManager = managerRepository.save(manager);
-        return managerMapper.toDTOAfterCreate(savedManager);
+        return managerMapper.toDTO(savedManager);
     }
 
 }

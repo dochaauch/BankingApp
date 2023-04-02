@@ -20,8 +20,6 @@ import java.util.UUID;
 @Table(name = "manager")
 public class Manager {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
     @Column(name = "first_name")
