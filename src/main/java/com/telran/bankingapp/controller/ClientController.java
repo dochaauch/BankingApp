@@ -3,10 +3,8 @@ package com.telran.bankingapp.controller;
 import com.telran.bankingapp.dto.ClientDTO;
 import com.telran.bankingapp.service.ClientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,11 @@ public class ClientController {
     @GetMapping("/{uuid}")
     public ClientDTO getById(@PathVariable String uuid) {
         return clientService.getClientById(uuid);
+    }
+
+    @PostMapping("/new")
+    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTO){
+        ClientDTO createdClient = clientService.createClient(clientDTO);
+        return ResponseEntity.ok(createdClient);
     }
 }
