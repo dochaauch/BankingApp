@@ -40,21 +40,36 @@ public class ClientServiceImpl implements ClientService {
         client.setId(UUID.randomUUID());
         client.setCreatedAt(LocalDateTime.now());
         client.setUpdatedAt(LocalDateTime.now());
-        Client existingClientCode = clientRepository.findByTaxCode(client.getTaxCode());
+
+        validateTaxCode(client.getTaxCode());
+        validateClientId(client.getId().toString());
+        Manager manager = getManager(clientDTO.getManagerId());
+        client.setManager(manager);
+
+        Client savedClient = clientRepository.save(client);
+        return clientMapper.toDto(savedClient);
+    }
+
+    private void validateTaxCode(String taxCode) {
+        Client existingClientCode = clientRepository.findByTaxCode(taxCode);
         if (existingClientCode != null) {
             throw new IllegalArgumentException("This tax code is already used in system");
         }
-        Client existingClientId = clientRepository.findById(UUID.fromString(client.getId().toString())).orElse(null);
-        if (existingClientId !=  null) {
+    }
+
+    private void validateClientId(String clientId) {
+        Client existingClientId = clientRepository.findById(UUID.fromString(clientId)).orElse(null);
+        if (existingClientId != null) {
             throw new IllegalArgumentException("This id is already used");
         }
-        Manager manager = managerRepository.findById(clientDTO.getManagerId()).orElse(null);
+    }
+
+    private Manager getManager(UUID managerId) {
+        Manager manager = managerRepository.findById(managerId).orElse(null);
         if (manager == null) {
             throw new IllegalArgumentException("Manager not found");
         }
-        client.setManager(manager);
-        Client savedClient = clientRepository.save(client);
-        return clientMapper.toDto(savedClient);
+        return manager;
     }
 
 
