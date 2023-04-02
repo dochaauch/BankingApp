@@ -47,7 +47,7 @@
         <insert tableName="client">
             <column name="id" valueComputed="UUID_TO_BIN('54fcea4f-4e69-41fa-876c-f0daaa60d9ed')" />
             <column name="manager_id" valueComputed="UUID_TO_BIN('e87af78c-bfeb-4a5d-b401-07f364388a21')" />
-            <column name="status">ACTICE</column>
+            <column name="status">ACTIVE</column>
             <column name="tax_code">MNOP3456</column>
             <column name="first_name">Alice</column>
             <column name="last_name">Jones</column>

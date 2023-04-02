@@ -1,14 +1,9 @@
 package com.telran.bankingapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.telran.bankingapp.entity.Client;
-import jakarta.persistence.Column;
 import lombok.Value;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Value
 public class AccountDTO {
@@ -18,7 +13,6 @@ public class AccountDTO {
     String balance;
     String currencyCode;
 
-    //ClientDTO client;
     String clientId;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
