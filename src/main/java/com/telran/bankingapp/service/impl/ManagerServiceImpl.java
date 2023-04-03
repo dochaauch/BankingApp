@@ -68,8 +68,6 @@ public class ManagerServiceImpl implements ManagerService {
 
     private void setManagerFields(Manager manager, UUID managerId) {
         manager.setId(managerId);
-        manager.setCreatedAt(LocalDateTime.now());
-        manager.setUpdatedAt(LocalDateTime.now());
     }
 
 
