@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface AccountMapper {
     @Mapping(source = "account.client.id", target = "clientId")
+    @Mapping(source = "account.client.manager.firstName", target = "managerFirstName")
     AccountDTO toDto(Account account);
 
     List<AccountDTO> accountsToAccountsDto(List<Account> accounts);

@@ -20,4 +20,6 @@ public class AccountDTO {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     LocalDateTime updatedAt;
+
+    String managerFirstName;
 }
