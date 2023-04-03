@@ -31,4 +31,9 @@ public class AccountController {
     public AccountDTO getAccountById(@PathVariable String uuid) {
         return accountService.getAccountById(uuid);
     }
+
+    @GetMapping("/active")
+    public List<AccountDTO> getAllActiveAccounts() {
+        return accountService.getAllActiveAccounts();
+    }
 }

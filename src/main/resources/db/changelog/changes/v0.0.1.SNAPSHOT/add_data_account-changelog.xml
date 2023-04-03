@@ -43,7 +43,7 @@
             <column name="client_id" valueComputed="UUID_TO_BIN('106ebf87-6fd0-474a-af49-cb9910af7f47')" />
             <column name="name">Checking_Account2</column>
             <column name="type">CURRENT</column>
-            <column name="status">ACTIVE</column>
+            <column name="status">BLOCKED</column>
             <column name="balance">500.00</column>
             <column name="currency_code">EUR</column>
             <column name="created_at">2023-03-14 00:00:00</column>
