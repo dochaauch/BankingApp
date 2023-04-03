@@ -38,10 +38,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public List<AccountDTO> getAllActiveAccounts() {
-        List<Account> accounts = accountRepository.findAll()
+        List<Account> accounts = accountRepository.findAccountsByStatus(AccountStatus.ACTIVE);
+        /*List<Account> accounts = accountRepository.findAll()
                 .stream()
                 .filter(account -> account.getStatus()== AccountStatus.ACTIVE)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
         return accountMapper.accountsToAccountsDto(accounts);
     }
 }
