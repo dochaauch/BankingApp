@@ -25,4 +25,6 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
             "WHERE p.id = :productId")
     List<Account> findAccountsByProductId(@Param("productId") UUID productId);
 
+    List<Account> findByClientManagerProductListId(UUID productId);
+
 }
