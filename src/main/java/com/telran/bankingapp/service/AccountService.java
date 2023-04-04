@@ -9,4 +9,6 @@ public interface AccountService {
     AccountDTO getAccountById(String uuid);
 
     List<AccountDTO> getAllActiveAccounts();
+
+    List<AccountDTO> getAccountsByProudctId(String productId);
 }

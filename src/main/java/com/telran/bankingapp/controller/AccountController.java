@@ -36,4 +36,9 @@ public class AccountController {
     public List<AccountDTO> getAllActiveAccounts() {
         return accountService.getAllActiveAccounts();
     }
+
+    @GetMapping("/by_product/{productId}")
+    public List<AccountDTO> getAccountsByProductId(@PathVariable String productId){
+        return accountService.getAccountsByProudctId(productId);
+    }
 }

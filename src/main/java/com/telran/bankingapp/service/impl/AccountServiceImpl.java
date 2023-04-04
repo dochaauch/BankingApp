@@ -45,4 +45,12 @@ public class AccountServiceImpl implements AccountService {
                 .collect(Collectors.toList());*/
         return accountMapper.accountsToAccountsDto(accounts);
     }
+
+    @Override
+    public List<AccountDTO> getAccountsByProudctId(String productId) {
+        List<Account> accounts = accountRepository.findAccountsByProductId(UUID.fromString(productId));
+        return accountMapper.accountsToAccountsDto(accounts);
+    }
+
+
 }

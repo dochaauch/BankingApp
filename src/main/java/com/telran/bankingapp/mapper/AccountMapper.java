@@ -4,8 +4,11 @@ import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.entity.Account;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.UUID;
 
 @Mapper(componentModel = "spring")
 
@@ -15,4 +18,5 @@ public interface AccountMapper {
     AccountDTO toDto(Account account);
 
     List<AccountDTO> accountsToAccountsDto(List<Account> accounts);
+
 }
