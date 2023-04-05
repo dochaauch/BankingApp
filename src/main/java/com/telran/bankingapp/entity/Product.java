@@ -1,5 +1,6 @@
 package com.telran.bankingapp.entity;
 
+import com.telran.bankingapp.entity.enums.CurrencyType;
 import com.telran.bankingapp.entity.enums.ProductStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,7 +33,8 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
     @Column(name = "currency_code")
-    private int currencyCode;
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currencyCode;
     @Column(name = "interest_rate")
     private double interestRate;
     @Column(name = "limit")

@@ -22,4 +22,5 @@ public class AccountDTO {
     LocalDateTime updatedAt;
 
     String managerFirstName;
+    String ProductId;
 }
