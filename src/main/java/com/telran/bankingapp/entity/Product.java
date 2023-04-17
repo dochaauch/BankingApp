@@ -37,7 +37,7 @@ public class Product {
     private CurrencyType currencyCode;
     @Column(name = "interest_rate")
     private double interestRate;
-    @Column(name = "limit")
+    @Column(name = "limit_pr")
     private int limit;
     @Column(name = "created_at")
     private LocalDateTime createdAt;

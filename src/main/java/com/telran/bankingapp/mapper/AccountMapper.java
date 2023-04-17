@@ -18,7 +18,7 @@ public interface AccountMapper {
     /*@Mapping(expression = "java(account.getClient().getManager().getProductList().isEmpty() " +
             "? null : account.getClient().getManager().getProductList().get(0).getId().toString())",
             target = "productId")*/
-    @Mapping(expression = "java(getProductId(account))", target = "productId")
+    //@Mapping(expression = "java(getProductId(account))", target = "productId")
     AccountDTO toDto(Account account);
 
     List<AccountDTO> accountsToAccountsDto(List<Account> accounts);
