@@ -1,20 +1,14 @@
 package com.telran.bankingapp.controller;
 
 import com.telran.bankingapp.dto.AccountDTO;
-import com.telran.bankingapp.entity.Account;
-import com.telran.bankingapp.repository.AccountRepository;
 import com.telran.bankingapp.service.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,7 +32,7 @@ public class AccountController {
     }
 
     @GetMapping("/by_product/{productId}")
-    public List<AccountDTO> getAccountsByProductId(@PathVariable String productId){
+    public List<AccountDTO> getAccountsByProductId(@PathVariable String productId) {
         return accountService.getAccountsByProudctId(productId);
     }
 }

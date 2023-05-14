@@ -1,7 +1,6 @@
 package com.telran.bankingapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Value;
 
 import java.time.LocalDateTime;
@@ -23,6 +22,4 @@ public class ClientDTO {
     LocalDateTime createdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     LocalDateTime updatedAt;
-
-    //String accountList;
 }

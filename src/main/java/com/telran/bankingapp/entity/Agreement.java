@@ -32,13 +32,17 @@ public class Agreement {
 
     @Column(name = "interest_rate")
     private double interestRate;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private AccountProductStatus status;
+
     @Column(name = "sum")
     private double sum;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

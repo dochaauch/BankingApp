@@ -24,23 +24,30 @@ public class Product {
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_id")
     private Manager manager;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
+
     @Column(name = "currency_code")
     @Enumerated(EnumType.STRING)
     private CurrencyType currencyCode;
     @Column(name = "interest_rate")
     private double interestRate;
+
     @Column(name = "limit_pr")
     private int limit;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

@@ -29,13 +29,17 @@ public class Transaction {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "credit_account_id")
     private Account creditAccount;
+
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
     private TransactionType type;
+
     @Column(name = "amount")
     private double amount;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

@@ -38,9 +38,4 @@
             <column name="sum">20000.00</column>
         </insert>
     </changeSet>
-
-
-
-
-
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-package com.telran.bankingapp.controller;
+package com.telran.bankingapp.exception;
 
 import java.util.UUID;
 

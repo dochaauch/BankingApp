@@ -5,7 +5,7 @@ import com.telran.bankingapp.entity.Product;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface PorductMapper {
+public interface ProductMapper {
     ProductDTO toDTO(Product product);
 
     Product toProduct(ProductDTO productDTO);

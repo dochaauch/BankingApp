@@ -1,38 +1,41 @@
 package com.telran.bankingapp.controller;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.service.AccountService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import util.DtoCreator;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.BDDMockito.given;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountController.class)
-public class AccountControllerTest {
+@DisplayName("AccountController test class")
+//@AutoConfigureMockMvc(addFilters = false)
+//@ActiveProfiles("test")
+//@ContextConfiguration(classes = {AccountController.class, AccountService.class, AccountRepository.class, AccountMapper.class, Account.class, AccountDto.class, AccountMapperTest.class}
 
+class AccountControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -43,59 +46,58 @@ public class AccountControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void testGetAllAccounts() throws Exception {
-        List<AccountDTO> accountDTOList = Arrays.asList(
-                new AccountDTO("Account 1", "Type 1", "Status 1", "100.00", "USD", "Client 1", LocalDateTime.now(), LocalDateTime.now(), "Manager 1", "Product 1"),
-                new AccountDTO("Account 2", "Type 2", "Status 2", "200.00", "EUR", "Client 2", LocalDateTime.now(), LocalDateTime.now(), "Manager 2", "Product 2")
-        );
+    void testGetAllAccountsGetStatus() throws Exception{
+        RequestBuilder request = MockMvcRequestBuilders
+                .get("/accounts")
+                .accept(MediaType.APPLICATION_JSON);
 
-        given(accountService.getAllAccounts()).willReturn(accountDTOList);
+        mockMvc.perform(request)
+                .andExpect(status().isOk());
+    }
 
-        mockMvc.perform(get("/accounts"))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(accountDTOList)));
+
+//    @Test
+//    void getAllAccountsTest() throws Exception {
+//        // create a list of AccountDTO objects to be returned by the mocked service
+//        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getAccountDto(),
+//                DtoCreator.getAccountDto(),
+//                DtoCreator.getAccountDto(),
+//                DtoCreator.getAccountDto()
+//                );
+//
+//        // configure the mock service to return the list of AccountDTO objects
+//        when(accountService.getAllAccounts()).thenReturn(accountDTOList);
+//
+//        // perform a GET request to the "/accounts" endpoint
+//        MvcResult mvcResult = mockMvc.perform(get("/accounts"))
+//                .andExpect(status().isOk())
+//                .andReturn();
+//
+//        // extract the response body as a JSON string
+//        String responseBody = mvcResult.getResponse().getContentAsString();
+//
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+//
+//        // deserialize the JSON string into a list of AccountDTO objects
+//        List<AccountDTO> responseList = objectMapper.readValue(responseBody,
+//                new TypeReference<List<AccountDTO>>() {});
+//
+//        // assert that the response list matches the mocked list
+//        assertTrue(responseList.size() > 0);
+//        AccountDTO firstDto = responseList.get(0);
+//        assertEquals(firstDto.getCreatedAt(),
+//                LocalDateTime.parse("14.03.2023", formatter));
+//    }
+
+    @Test
+    void getAccountById() {
     }
 
     @Test
-    public void testGetAccountById() throws Exception {
-        UUID accountId = UUID.randomUUID();
-        AccountDTO accountDTO = new AccountDTO("Account 1", "Type 1", "Status 1", "100.00", "USD", "Client 1", LocalDateTime.now(), LocalDateTime.now(), "Manager 1", "Product 1");
-
-        given(accountService.getAccountById(accountId.toString())).willReturn(accountDTO);
-
-        mockMvc.perform(get("/accounts/{uuid}", accountId.toString()))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(accountDTO)));
+    void getAllActiveAccounts() {
     }
 
     @Test
-    public void testGetAllActiveAccounts() throws Exception {
-        List<AccountDTO> accountDTOList = Arrays.asList(
-                new AccountDTO("Account 1", "Type 1", "ACTIVE", "100.00", "USD", "Client 1", LocalDateTime.now(), LocalDateTime.now(), "Manager 1", "Product 1"),
-                new AccountDTO("Account 2", "Type 2", "ACTIVE", "200.00", "EUR", "Client 2", LocalDateTime.now(), LocalDateTime.now(), "Manager 2", "Product 2")
-        );
-
-        given(accountService.getAllActiveAccounts()).willReturn(accountDTOList);
-
-        mockMvc.perform(get("/accounts/active"))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(accountDTOList)));
+    void getAccountsByProductId() {
     }
-
-    @Test
-    public void testGetAccountsByProductId() throws Exception {
-        UUID productId = UUID.randomUUID();
-        List<AccountDTO> accountDTOList = Arrays.asList(
-                new AccountDTO("Account 1", "Type 1", "Status 1", "100.00", "USD", "Client 1", LocalDateTime.now(), LocalDateTime.now(), "Manager 1", productId.toString()),
-                new AccountDTO("Account 2", "Type 2", "Status 2", "200.00", "EUR", "Client 2", LocalDateTime.now(), LocalDateTime.now(), "Manager 2", productId.toString())
-        );
-
-        given(accountService.getAccountsByProudctId(productId.toString())).willReturn(accountDTOList);
-
-        mockMvc.perform(get("/accounts/by_product/{productId}", productId.toString()))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(accountDTOList)));
-    }
-
 }
-

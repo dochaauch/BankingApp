@@ -22,16 +22,20 @@ public class Manager {
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
+
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
     private String lastName;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private ManagerStatus status;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 

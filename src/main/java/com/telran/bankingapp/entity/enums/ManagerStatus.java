@@ -3,17 +3,5 @@ package com.telran.bankingapp.entity.enums;
 public enum ManagerStatus {
     ACTIVE,
     PENDING,
-    REMOVED;
-//    ACTIVE(1),
-//    PENDING(2),
-//    REMOVED(3);
-//    private final int value;
-//
-//    ManagerStatus(int value) {
-//        this.value = value;
-//    }
-//
-//    public int getValue() {
-//        return value;
-//    }
+    REMOVED
 }

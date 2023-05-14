@@ -49,7 +49,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountDTO> getAccountsByProudctId(String productId) {
         //List<Account> accounts = accountRepository.findAccountsByProductId(UUID.fromString(productId));
-        List<Account> accounts = accountRepository.findByClientManagerProductListId(UUID.fromString(productId));
+        //List<Account> accounts = accountRepository.findByClientManagerProductListId(UUID.fromString(productId));
+        List<Account> accounts = accountRepository.findByAgreementList_Product_Id(UUID.fromString(productId));
         return accountMapper.accountsToAccountsDto(accounts);
     }
 

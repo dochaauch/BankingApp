@@ -17,14 +17,6 @@ public interface AccountRepository extends JpaRepository<Account, UUID> {
 
     List<Account> findAccountsByStatus(AccountStatus status);
 
-
-    @Query("SELECT a FROM Account a " +
-            "JOIN a.client c " +
-            "JOIN c.manager m " +
-            "JOIN m.productList p " +
-            "WHERE p.id = :productId")
-    List<Account> findAccountsByProductId(@Param("productId") UUID productId);
-
-    List<Account> findByClientManagerProductListId(UUID productId);
+    List<Account> findByAgreementList_Product_Id(UUID productId);
 
 }
