@@ -35,25 +35,25 @@ ___
 | id            | binary(16)    | id key of row - unique, not null, primary key |
 | client_id     | binary(16)    | client id                                     |         
 | name          | varchar(100)  | a name of account                             |                              
-| type          | int(1)        | account type                                  |                                   
-| status        | int(1)        | status of tne account                         |                          
+| type          | enum          | account type                                  |                                   
+| status        | enum          | status of tne account                         |                          
 | balance       | numeric(15,2) | balance of the account in currency            | 
-| currency_code | int(2)        | account currency code                         |                          
+| currency_code | enum          | account currency code                         |                          
 | created_at    | timestamp     | timestamp of row creation                     |
 | updated_at    | timestamp     | timestamp of last update                      |
 
 ### Table Product ( Sets of Bank's available Products)
-| Column name    | Type           | Description                                                              |
-|----------------|----------------|--------------------------------------------------------------------------|
-| id             | int            | id key of row - unique, not null, primary key                            |
-| managet_id     | int            | manager id                                                               |
-| name           | varchar(70)    | product's name                                                           |
-| status         | int(1)         | product's status                                                         |
-| currency_code  | int(2)         | currency of product                                                      |
-| interest_rate  | numeric(6,4)   | interest rate of product                                                 |
-| limit          | numeric(15,2)  | limit of credit a product ( 0 - no limit, 0 < - limit which can be used) |
-| created_at     | timestamp      | timestamp of row creation                                                |
-| updated_at     | timestamp      | timestamp of last update                                                 |
+| Column name    | Type          | Description                                                              |
+|----------------|---------------|--------------------------------------------------------------------------|
+| id             | int           | id key of row - unique, not null, primary key                            |
+| managet_id     | int           | manager id                                                               |
+| name           | varchar(70)   | product's name                                                           |
+| status         | enum          | product's status                                                         |
+| currency_code  | enum          | currency of product                                                      |
+| interest_rate  | numeric(6,4)  | interest rate of product                                                 |
+| limit          | numeric(15,2) | limit of credit a product ( 0 - no limit, 0 < - limit which can be used) |
+| created_at     | timestamp     | timestamp of row creation                                                |
+| updated_at     | timestamp     | timestamp of last update                                                 |
 
 ### Table Agreement (Bank's - Client's  Agreement table)
 
@@ -75,7 +75,7 @@ ___
 | 	id                | binary(16)    | id key of row - unique, not null, primary key | 
 | 	debit_account_id  | binary(16)    | transaction's debit account                   | 
 | 	credit_account_id | binary(16)    | transaction's credit account                  | 
-| 	type              | int(1)        | transaction type                              | 
+| 	type              | enum          | transaction type                              | 
 | 	amount            | numeric(12,2) | transaction amount in the account currency    | 
 | 	description       | varchar(255)  | description of transaction                    | 
 | 	created_at        | timestamp     | timestamp of row creation                     | 

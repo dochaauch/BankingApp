@@ -1,6 +1,5 @@
 package com.telran.bankingapp.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.service.AccountService;
@@ -16,17 +15,19 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.webjars.NotFoundException;
 import util.DtoCreator;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static util.DtoCreator.CREATEDAT;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountController.class)
@@ -46,7 +47,7 @@ class AccountControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void testGetAllAccountsGetStatus() throws Exception{
+    void testGetAllAccountsGetStatus() throws Exception {
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/accounts")
                 .accept(MediaType.APPLICATION_JSON);
@@ -56,48 +57,78 @@ class AccountControllerTest {
     }
 
 
-//    @Test
-//    void getAllAccountsTest() throws Exception {
-//        // create a list of AccountDTO objects to be returned by the mocked service
-//        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getAccountDto(),
-//                DtoCreator.getAccountDto(),
-//                DtoCreator.getAccountDto(),
-//                DtoCreator.getAccountDto()
-//                );
-//
-//        // configure the mock service to return the list of AccountDTO objects
-//        when(accountService.getAllAccounts()).thenReturn(accountDTOList);
-//
-//        // perform a GET request to the "/accounts" endpoint
-//        MvcResult mvcResult = mockMvc.perform(get("/accounts"))
-//                .andExpect(status().isOk())
-//                .andReturn();
-//
-//        // extract the response body as a JSON string
-//        String responseBody = mvcResult.getResponse().getContentAsString();
-//
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-//
-//        // deserialize the JSON string into a list of AccountDTO objects
-//        List<AccountDTO> responseList = objectMapper.readValue(responseBody,
-//                new TypeReference<List<AccountDTO>>() {});
-//
-//        // assert that the response list matches the mocked list
-//        assertTrue(responseList.size() > 0);
-//        AccountDTO firstDto = responseList.get(0);
-//        assertEquals(firstDto.getCreatedAt(),
-//                LocalDateTime.parse("14.03.2023", formatter));
-//    }
-
     @Test
-    void getAccountById() {
+    void getAllAccountsTest() throws Exception {
+        // create a list of AccountDTO objects to be returned by the mocked service
+        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(),
+                DtoCreator.getTestAccountDto(),
+                DtoCreator.getTestAccountDto(),
+                DtoCreator.getTestAccountDto()
+        );
+
+        // configure the mock service to return the list of AccountDTO objects
+        when(accountService.getAllAccounts()).thenReturn(accountDTOList);
+
+        // perform a GET request to the "/accounts" endpoint
+        MvcResult mvcResult = mockMvc.perform(get("/accounts"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        // extract the response body as a JSON string
+        String responseBody = mvcResult.getResponse().getContentAsString();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        // deserialize the JSON string into a list of AccountDTO objects
+        List<AccountDTO> responseList = objectMapper.readValue(responseBody,
+                objectMapper.getTypeFactory()
+                        .constructCollectionType(List.class, AccountDTO.class));
+
+
+        // assert that the response list matches the mocked list
+        assertTrue(responseList.size() > 0);
+        AccountDTO firstDto = responseList.get(0);
+        assertEquals(firstDto.getCreatedAt().format(formatter), CREATEDAT);
     }
 
     @Test
-    void getAllActiveAccounts() {
+    void getAccountByIdTest() throws Exception {
+        // Arrange
+        String validUuidFromLiquibase = "dce72405-ce50-49d9-9b5b-d6cf0cd61346";
+        AccountDTO accountDTO = DtoCreator.getValidAccountDto();
+        when(accountService.getAccountById(validUuidFromLiquibase))
+                .thenReturn(accountDTO);
+
+        // Act
+        MvcResult mvcResult = mockMvc.perform(
+                get("/accounts/" + validUuidFromLiquibase))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        // Assert
+        String json = mvcResult.getResponse().getContentAsString();
+        AccountDTO responseDto = objectMapper.readValue(json, AccountDTO.class);
+        //String expectedJson = objectMapper.writeValueAsString(responseDto);
+        String expectedJson = "{\"name\":\"Checking_Account1\"," +
+                "\"type\":\"CURRENT\"," +
+                "\"status\":\"ACTIVE\"," +
+                "\"balance\":\"1000.00\"," +
+                "\"currencyCode\":\"EUR\"," +
+                "\"clientId\":\"611195b6-c02b-44cd-a8a9-92a85a521262\"," +
+                "\"createdAt\":\"2023-03-14T00:00:00\"," +
+                "\"updatedAt\":\"2023-03-14T00:00:00\"," +
+                "\"managerFirstName\":\"John\"," +
+                "\"productId\":null}";
+        assertEquals(expectedJson, json);
+    }
+
+
+
+    @Test
+    void getAllActiveAccountsTest() {
     }
 
     @Test
-    void getAccountsByProductId() {
+    void getAccountsByProductIdTest() {
     }
 }
