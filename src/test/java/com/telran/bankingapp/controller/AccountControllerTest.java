@@ -122,7 +122,15 @@ class AccountControllerTest {
         assertEquals(expectedJson, json);
     }
 
-
+    @Test
+    void getAccountByWrongIdTest() throws Exception {
+        String wrongId = "wrong";
+        when(accountService.getAccountById(wrongId))
+                .thenThrow(new NotFoundException("Account not found"));
+        MvcResult mvcResult = (MvcResult) mockMvc.perform(
+                        get("/accounts/" + wrongId))
+                .andExpect(status().isNotFound());
+    }
 
     @Test
     void getAllActiveAccountsTest() {
