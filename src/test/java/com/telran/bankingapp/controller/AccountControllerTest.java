@@ -2,6 +2,8 @@ package com.telran.bankingapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telran.bankingapp.dto.AccountDTO;
+import com.telran.bankingapp.exception.AccountNotFoundException;
+import com.telran.bankingapp.exception.ErrorMessage;
 import com.telran.bankingapp.service.AccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static util.DtoCreator.CREATEDAT;
 
@@ -126,10 +129,10 @@ class AccountControllerTest {
     void getAccountByWrongIdTest() throws Exception {
         String wrongId = "wrong";
         when(accountService.getAccountById(wrongId))
-                .thenThrow(new NotFoundException("Account not found"));
+                .thenThrow(new AccountNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
         MvcResult mvcResult = (MvcResult) mockMvc.perform(
-                        get("/accounts/" + wrongId))
-                .andExpect(status().isNotFound());
+                        get("/accounts/{uuid}", wrongId))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
