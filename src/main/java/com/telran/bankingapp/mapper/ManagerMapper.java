@@ -18,5 +18,4 @@ public interface ManagerMapper {
     @Mapping(target = "createdAt", expression = "java(LocalDateTime.now())")
     @Mapping(target = "updatedAt", expression = "java(LocalDateTime.now())")
     Manager toManager(ManagerDTO managerDTO);
-
 }
