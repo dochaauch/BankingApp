@@ -3,6 +3,7 @@ package com.telran.bankingapp.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.exception.AccountNotFoundException;
+import com.telran.bankingapp.exception.DataNotFoundException;
 import com.telran.bankingapp.exception.ErrorMessage;
 import com.telran.bankingapp.service.AccountService;
 import org.junit.jupiter.api.DisplayName;
@@ -129,10 +130,10 @@ class AccountControllerTest {
     void getAccountByWrongIdTest() throws Exception {
         String wrongId = "wrong";
         when(accountService.getAccountById(wrongId))
-                .thenThrow(new AccountNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
-        MvcResult mvcResult = (MvcResult) mockMvc.perform(
-                        get("/accounts/{uuid}", wrongId));
-                //.andExpect(status().is4xxClientError());
+                .thenThrow(new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
+        mockMvc.perform(
+                        get("/accounts/{uuid}", wrongId))
+                .andExpect(status().is4xxClientError());
     }
 
     @Test
