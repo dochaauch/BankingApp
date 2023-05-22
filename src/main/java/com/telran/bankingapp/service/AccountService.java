@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface AccountService {
     List<AccountDTO> getAllAccounts();
+
     AccountDTO getAccountById(String uuid);
 
     List<AccountDTO> getAllActiveAccounts();

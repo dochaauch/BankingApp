@@ -1,20 +1,12 @@
 package service.impl;
 
-import com.telran.bankingapp.dto.AccountDTO;
-import com.telran.bankingapp.entity.Account;
 import com.telran.bankingapp.mapper.AccountMapper;
 import com.telran.bankingapp.repository.AccountRepository;
-import util.DtoCreator;
-import util.EntityCreator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
-import java.util.UUID;
 
 @DisplayName("Account Service test class")
 @ExtendWith(MockitoExtension.class)
