@@ -25,5 +25,5 @@ public class AccountDTO {
 
     String managerFirstName;
 
-    String productId;
+    //String productId;
 }

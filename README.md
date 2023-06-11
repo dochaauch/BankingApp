@@ -6,7 +6,7 @@ Data consist of clients, accounts, products, accounts, transactions and managers
 ___
 
 * [ApiDoc Link](http://localhost:8080/swagger-ui/index.html)
-* [JACOCO Link](http://localhost:63342/BankProj/target/site/jacoco/index.html)
+* [JACOCO Link](http://localhost:63342/BankingApp/target/site/jacoco/index.html)
 ___
 ## Database structure
 

@@ -121,8 +121,7 @@ class AccountControllerTest {
                 "\"clientId\":\"611195b6-c02b-44cd-a8a9-92a85a521262\"," +
                 "\"createdAt\":\"2023-03-14T00:00:00\"," +
                 "\"updatedAt\":\"2023-03-14T00:00:00\"," +
-                "\"managerFirstName\":\"John\"," +
-                "\"productId\":null}";
+                "\"managerFirstName\":\"John\"}";
         assertEquals(expectedJson, json);
     }
 

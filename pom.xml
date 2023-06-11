@@ -70,11 +70,11 @@
             <optional>true</optional>
         </dependency>
 
-        <!--https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+        <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
         <dependency>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.9</version>
+            <version>0.8.8</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -82,11 +82,18 @@
             <version>2.0.4</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>io.swagger.core.v3</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--            <version>2.2.8</version>-->
+<!--        </dependency>-->
+
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>2.2.8</version>
+            <groupId>org.webjars</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>4.18.1</version>
         </dependency>
+
 
     </dependencies>
 
@@ -114,25 +121,34 @@
                     </includes>
                 </configuration>
             </plugin>
-            <!--<plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10-SNAPSHOT</version>
-            </plugin>-->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
+                <version>0.8.8</version>
+
+                <configuration>
+                    <excludes>
+                        <exclude>com/**/dto/*</exclude>
+                        <exclude>com/**/entity/*</exclude>
+                        <exclude>com/**/enums/*</exclude>
+                        <exclude>com/**/aspect/*</exclude>
+                        <exclude>com/**/repository/*</exclude>
+                        <exclude>com/**/validation/*</exclude>
+                        <exclude>com/**/exceptions/*</exclude>
+                        <exclude>com/**/BankApplication.class</exclude>
+                    </excludes>
+                    <outputDirectory>target/site/jacoco</outputDirectory>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>prepare-agent</id>
+                        <id>jacoco-initialize</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>test</phase>
+                        <id>jacoco-site</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>

@@ -24,8 +24,8 @@ public class DtoCreator {
                 "106ebf87-6fd0-474a-af49-cb9910af7f47",
                 LocalDateTime.parse("2023-03-14T00:00:00"),
                 LocalDateTime.parse("2023-03-14T00:00:00"),
-                "Jane",
-                null
+                "Jane"
+                //null
         );
     }
 
@@ -39,8 +39,7 @@ public class DtoCreator {
                 "611195b6-c02b-44cd-a8a9-92a85a521262",
                 LocalDateTime.parse("2023-03-14T00:00:00"),
                 LocalDateTime.parse("2023-03-14T00:00:00"),
-                "John",
-                null
+                "John"
         );
     }
 }
