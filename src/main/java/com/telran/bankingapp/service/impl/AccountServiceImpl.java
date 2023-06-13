@@ -31,11 +31,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public AccountDTO getAccountById(String uuidString){
+    public AccountDTO getAccountById(String uuidString) {
         UUID uuid = UUID.fromString(uuidString);
         log.info("Get an account with id {}", uuid);
-        return accountMapper.toDto(accountRepository.findById(uuid).orElseThrow(
-                () -> new AccountNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND)));
+        return accountMapper.toDto(accountRepository.findById(uuid)
+                .orElseThrow(() -> new AccountNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND)));
     }
 
     @Override
@@ -44,11 +44,11 @@ public class AccountServiceImpl implements AccountService {
         return accountMapper.accountsToAccountsDto(accounts);
     }
 
+
     @Override
     public List<AccountDTO> getAccountsByProudctId(String productId) {
-        List<Account> accounts = accountRepository.findByAgreementList_Product_Id(UUID.fromString(productId));
+        List<Account> accounts = accountRepository.findByAgreementList_Product_Id(
+                UUID.fromString(productId));
         return accountMapper.accountsToAccountsDto(accounts);
     }
-
-
 }

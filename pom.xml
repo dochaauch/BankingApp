@@ -139,9 +139,8 @@
                         <exclude>com/**/enums/*</exclude>
                         <exclude>com/**/aspect/*</exclude>
                         <exclude>com/**/repository/*</exclude>
-                        <exclude>com/**/validation/*</exclude>
-                        <exclude>com/**/exceptions/*</exclude>
-                        <exclude>com/**/BankApplication.class</exclude>
+                        <exclude>com/**/exception/*</exclude>
+                        <exclude>com/**/BankingAppApplication.class</exclude>
                     </excludes>
                     <outputDirectory>target/site/jacoco</outputDirectory>
                 </configuration>
