@@ -1,4 +1,4 @@
-package com.telran.bankingapp.exception;
+package com.telran.bankingapp.controller.exception;
 
 import com.telran.bankingapp.dto.ErrorExtensionDto;
 import com.telran.bankingapp.dto.ErrorResponseDto;

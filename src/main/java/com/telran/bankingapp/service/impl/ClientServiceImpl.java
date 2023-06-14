@@ -8,7 +8,6 @@ import com.telran.bankingapp.repository.ClientRepository;
 import com.telran.bankingapp.repository.ManagerRepository;
 import com.telran.bankingapp.service.ClientService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -43,7 +42,7 @@ public class ClientServiceImpl implements ClientService {
 
         validateTaxCode(client.getTaxCode());
         validateClientId(client.getId().toString());
-        Manager manager = getManager(clientDTO.getManagerId());
+        Manager manager = getManager(UUID.fromString(clientDTO.getManagerId()));
         client.setManager(manager);
 
         Client savedClient = clientRepository.save(client);
@@ -71,6 +70,4 @@ public class ClientServiceImpl implements ClientService {
         }
         return manager;
     }
-
-
 }

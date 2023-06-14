@@ -1,4 +1,4 @@
-package com.telran.bankingapp.exception;
+package com.telran.bankingapp.controller.exception;
 
 public class ErrorMessage {
     public static final String ACCOUNT_NOT_FOUND = "Account was not found by this Id";
