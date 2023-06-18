@@ -1,8 +1,6 @@
 package com.telran.bankingapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.Value;
 
 import java.time.LocalDateTime;
@@ -10,9 +8,13 @@ import java.time.LocalDateTime;
 @Value
 public class AccountDTO {
     String name;
+
     String type;
+
     String status;
+
     String balance;
+
     String currencyCode;
 
     String clientId;
@@ -24,6 +26,4 @@ public class AccountDTO {
     LocalDateTime updatedAt;
 
     String managerFirstName;
-
-    //String productId;
 }

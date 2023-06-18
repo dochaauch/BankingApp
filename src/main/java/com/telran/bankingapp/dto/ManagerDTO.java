@@ -11,8 +11,8 @@ public class ManagerDTO {
     String firstName;
     String lastName;
     String status;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     LocalDateTime createdAt;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     LocalDateTime updatedAt;
 }
