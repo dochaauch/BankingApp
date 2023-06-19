@@ -1,4 +1,4 @@
-package util;
+package com.telran.bankingapp.util;
 
 import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.dto.ClientDTO;

@@ -1,9 +1,9 @@
 package com.telran.bankingapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.controller.exception.DataNotFoundException;
 import com.telran.bankingapp.controller.exception.ErrorMessage;
+import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.service.AccountService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import util.DtoCreator;
+import com.telran.bankingapp.util.DtoCreator;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -28,12 +28,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static util.DtoCreator.CREATEDAT;
+import static com.telran.bankingapp.util.DtoCreator.CREATEDAT;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(AccountController.class)
 @DisplayName("AccountController test class")
-
 class AccountControllerTest {
     @Autowired
     private MockMvc mockMvc;

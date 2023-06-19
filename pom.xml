@@ -141,6 +141,7 @@
                         <exclude>com/**/repository/*</exclude>
                         <exclude>com/**/exception/*</exclude>
                         <exclude>com/**/BankingAppApplication.class</exclude>
+                        <exclude>**/*.*(* *)</exclude>
                     </excludes>
                     <outputDirectory>target/site/jacoco</outputDirectory>
                 </configuration>

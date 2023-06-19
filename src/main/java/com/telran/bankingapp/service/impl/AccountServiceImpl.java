@@ -38,6 +38,7 @@ public class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> new AccountNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND)));
     }
 
+
     @Override
     public List<AccountDTO> getAllActiveAccounts() {
         List<Account> accounts = accountRepository.findAccountsByStatus(AccountStatus.ACTIVE);

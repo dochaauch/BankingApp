@@ -1,35 +1,28 @@
 package com.telran.bankingapp.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.telran.bankingapp.dto.ClientDTO;
 import com.telran.bankingapp.service.ClientService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import com.telran.bankingapp.util.DtoCreator;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.ResultMatcher;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import util.DtoCreator;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @ExtendWith(SpringExtension.class)
@@ -61,7 +54,7 @@ class ClientControllerTest {
         // Perform the GET request
         mockMvc.perform(get("/clients"))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content()
+                .andExpect(content()
                         .json(objectMapper.writeValueAsString(clients)));
     }
 
@@ -75,7 +68,7 @@ class ClientControllerTest {
         // Perform the GET request
         mockMvc.perform(get("/clients/{uuid}", uuid))
                 .andExpect(status().isOk())
-                .andExpect((ResultMatcher) content()
+                .andExpect(content()
                         .json(objectMapper.writeValueAsString(client)));
     }
 
