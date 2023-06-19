@@ -3,9 +3,7 @@ package com.telran.bankingapp.service.impl;
 import com.telran.bankingapp.dto.ClientDTO;
 import com.telran.bankingapp.entity.Client;
 import com.telran.bankingapp.entity.Manager;
-import com.telran.bankingapp.mapper.AccountMapper;
 import com.telran.bankingapp.mapper.ClientMapper;
-import com.telran.bankingapp.repository.AccountRepository;
 import com.telran.bankingapp.repository.ClientRepository;
 import com.telran.bankingapp.repository.ManagerRepository;
 import com.telran.bankingapp.util.DtoCreator;
@@ -17,11 +15,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

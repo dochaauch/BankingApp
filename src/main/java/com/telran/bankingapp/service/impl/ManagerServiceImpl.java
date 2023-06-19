@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,6 +39,9 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDTO createManager(UUID managerId, ManagerDTO dto) {
+        if (dto == null || dto.getFirstName() == null || dto.getLastName() == null) {
+            throw new IllegalArgumentException("Invalid manager data");
+        }
         return createOrUpdateManager(managerId, dto);
     }
 
@@ -47,6 +51,7 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     private ManagerDTO createOrUpdateManager(UUID managerIdL, ManagerDTO dto) {
+        checkManagerById(managerIdL.toString());
         Manager manager = managerMapper.toManager(dto);
         setManagerFields(manager, managerIdL);
         return saveManager(manager);
@@ -66,6 +71,7 @@ public class ManagerServiceImpl implements ManagerService {
         }
     }
 
+
     private void setManagerFields(Manager manager, UUID managerId) {
         manager.setId(managerId);
     }
@@ -77,5 +83,4 @@ public class ManagerServiceImpl implements ManagerService {
         Manager savedManager = managerRepository.save(manager);
         return managerMapper.toDTO(savedManager);
     }
-
 }
