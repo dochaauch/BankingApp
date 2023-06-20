@@ -70,6 +70,7 @@ public class EntityCreator {
                 new HashSet<>()
         );
     }
+
     public static Agreement getAgreementEntity() {
         Agreement agreement = new Agreement();
         agreement.setId(UUID.fromString("a67cb66e-31b1-46e0-8510-47871cccbf0c"));

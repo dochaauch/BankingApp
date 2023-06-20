@@ -36,21 +36,15 @@ class AccountServiceImplTest {
     @Test
     void testGetAllAccounts() {
         // Create a list of dummy accounts
-        List<Account> accounts = Arrays.asList(
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity()
-        );
+        List<Account> accounts = Arrays.asList(EntityCreator.getAccountEntity(),
+                EntityCreator.getAccountEntity(), EntityCreator.getAccountEntity());
 
         // Mock the accountRepository's behavior to return the list of accounts
         when(accountRepository.findAll()).thenReturn(accounts);
 
         // Mock the accountMapper's behavior to map the accounts to accountDTOs
-        List<AccountDTO> accountDTOs = Arrays.asList(
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto()
-        );
+        List<AccountDTO> accountDTOs = Arrays.asList(DtoCreator.getValidAccountDto(),
+                DtoCreator.getValidAccountDto(), DtoCreator.getValidAccountDto());
         when(accountMapper.accountsToAccountsDto(accounts)).thenReturn(accountDTOs);
 
         // Call the method under test
@@ -83,21 +77,15 @@ class AccountServiceImplTest {
     @Test
     void testGetAllActiveAccounts() {
         // Create a list of dummy active accounts
-        List<Account> accounts = Arrays.asList(
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity()
-        );
+        List<Account> accounts = Arrays.asList(EntityCreator.getAccountEntity(),
+                EntityCreator.getAccountEntity(), EntityCreator.getAccountEntity());
 
         // Mock the accountRepository's behavior to return the list of active accounts
         when(accountRepository.findAccountsByStatus(AccountStatus.ACTIVE)).thenReturn(accounts);
 
         // Mock the accountMapper's behavior to map the active accounts to accountDTOs
-        List<AccountDTO> accountDTOs = Arrays.asList(
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto()
-        );
+        List<AccountDTO> accountDTOs = Arrays.asList(DtoCreator.getValidAccountDto(),
+                DtoCreator.getValidAccountDto(), DtoCreator.getValidAccountDto());
         when(accountMapper.accountsToAccountsDto(accounts)).thenReturn(accountDTOs);
 
         // Call the method under test
@@ -114,21 +102,16 @@ class AccountServiceImplTest {
         String productId = "aaf2bc95-1403-4831-b8b5-8969445548ec";
 
         // Create a list of dummy accounts
-        List<Account> accounts = Arrays.asList(
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getAccountEntity()
-        );
+        List<Account> accounts = Arrays.asList(EntityCreator.getAccountEntity(),
+                EntityCreator.getAccountEntity(), EntityCreator.getAccountEntity());
 
         // Mock the accountRepository's behavior to return the list of accounts with the given product ID
-        when(accountRepository.findByAgreementList_Product_Id(UUID.fromString(productId))).thenReturn(accounts);
+        when(accountRepository.findByAgreementList_Product_Id(UUID.fromString(productId)))
+                .thenReturn(accounts);
 
         // Mock the accountMapper's behavior to map the accounts to accountDTOs
-        List<AccountDTO> accountDTOs = Arrays.asList(
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto(),
-                DtoCreator.getValidAccountDto()
-        );
+        List<AccountDTO> accountDTOs = Arrays.asList(DtoCreator.getValidAccountDto(),
+                DtoCreator.getValidAccountDto(), DtoCreator.getValidAccountDto());
         when(accountMapper.accountsToAccountsDto(accounts)).thenReturn(accountDTOs);
 
         // Call the method under test
@@ -148,6 +131,7 @@ class AccountServiceImplTest {
         when(accountRepository.findById(accountId)).thenReturn(Optional.empty());
 
         // Call the method under test and verify the exception
-        assertThrows(AccountNotFoundException.class, () -> service.getAccountById(accountId.toString()));
+        assertThrows(AccountNotFoundException.class,
+                () -> service.getAccountById(accountId.toString()));
     }
 }

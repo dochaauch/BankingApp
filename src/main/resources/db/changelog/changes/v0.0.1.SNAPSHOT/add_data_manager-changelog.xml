@@ -5,7 +5,6 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="insert manager data" author="j.jakobson">
-
         <insert tableName="manager">
             <column name="id" valueComputed="UUID_TO_BIN('11cf2217-b9d0-4d58-9ebb-f7f61e7206a6')"/>
             <column name="first_name">John</column>

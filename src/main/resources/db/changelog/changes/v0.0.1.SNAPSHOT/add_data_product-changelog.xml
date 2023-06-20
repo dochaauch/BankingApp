@@ -5,9 +5,7 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="add product data 02" author="j.jakobson">
-
         <delete tableName="product"/>
-
         <insert tableName="product">
             <column name="id" valueComputed="UUID_TO_BIN('aaf2bc95-1403-4831-b8b5-8969445548ec')" />
             <column name="manager_id" valueComputed="UUID_TO_BIN('e87af78c-bfeb-4a5d-b401-07f364388a21')" />

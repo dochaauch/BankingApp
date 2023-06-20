@@ -3,7 +3,6 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/drop_tables-changelog.xml"/>
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/create_tables-changelog.xml"/>
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_manager-changelog.xml"/>
@@ -12,5 +11,4 @@
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_product-changelog.xml"/>
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_agreement-changelog.xml"/>
     <include file="/db/changelog/changes/v0.0.1.SNAPSHOT/add_data_transaction-changelog.xml"/>
-
 </databaseChangeLog>

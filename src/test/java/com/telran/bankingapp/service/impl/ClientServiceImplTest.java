@@ -40,21 +40,15 @@ class ClientServiceImplTest {
     @Test
     void testGetAllClients() {
         // Create a list of dummy clients
-        List<Client> clients = Arrays.asList(
-                EntityCreator.getClientEntity(),
-                EntityCreator.getClientEntity(),
-                EntityCreator.getClientEntity()
-        );
+        List<Client> clients = Arrays.asList(EntityCreator.getClientEntity(),
+                EntityCreator.getClientEntity(), EntityCreator.getClientEntity());
 
         // Mock the clientRepository's behavior to return the list of clients
         when(clientRepository.findAll()).thenReturn(clients);
 
         // Mock the clientMapper's behavior to map the clients to clientDTOs
-        List<ClientDTO> clientDTOs = Arrays.asList(
-                DtoCreator.getValidClientDto(),
-                DtoCreator.getValidClientDto(),
-                DtoCreator.getValidClientDto()
-        );
+        List<ClientDTO> clientDTOs = Arrays.asList(DtoCreator.getValidClientDto(),
+                DtoCreator.getValidClientDto(), DtoCreator.getValidClientDto());
         when(clientMapper.clientsToClientsDTO(clients)).thenReturn(clientDTOs);
 
         // Call the method under test
@@ -127,7 +121,7 @@ class ClientServiceImplTest {
         ClientDTO result = service.getClientById(uuidString);
 
         // Verify the result
-        assertNotNull(result);  // Ensure that the result is not null
+        assertNotNull(result);
         assertEquals(clientDTO, result);
 
         // Verify the interactions
@@ -148,7 +142,8 @@ class ClientServiceImplTest {
         when(clientRepository.findByTaxCode(taxCode)).thenReturn(existingClient);
 
         // Call the private method under test using ReflectionTestUtils
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> {
             ReflectionTestUtils.invokeMethod(service, "validateTaxCode", taxCode);
         });
 
@@ -184,10 +179,12 @@ class ClientServiceImplTest {
         existingClient.setId(UUID.fromString(clientId));
 
         // Mock the clientRepository's behavior to return the existing client
-        when(clientRepository.findById(UUID.fromString(clientId))).thenReturn(Optional.of(existingClient));
+        when(clientRepository.findById(UUID.fromString(clientId)))
+                .thenReturn(Optional.of(existingClient));
 
         // Call the private method under test using ReflectionTestUtils
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> {
             ReflectionTestUtils.invokeMethod(service, "validateClientId", clientId);
         });
 
@@ -204,7 +201,8 @@ class ClientServiceImplTest {
         String clientId = "11cf2217-b9d0-4d58-9ebb-f7f61e7206a6";
 
         // Mock the clientRepository's behavior to return null, indicating that the client ID doesn't exist
-        when(clientRepository.findById(UUID.fromString(clientId))).thenReturn(Optional.empty());
+        when(clientRepository.findById(UUID.fromString(clientId)))
+                .thenReturn(Optional.empty());
 
         // Call the private method under test using ReflectionTestUtils
         ReflectionTestUtils.invokeMethod(service, "validateClientId", clientId);
@@ -244,7 +242,8 @@ class ClientServiceImplTest {
         when(managerRepository.findById(managerId)).thenReturn(Optional.empty());
 
         // Call the private method under test using ReflectionTestUtils
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> {
             ReflectionTestUtils.invokeMethod(service, "getManager", managerId);
         });
 

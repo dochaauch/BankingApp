@@ -5,7 +5,6 @@ import com.telran.bankingapp.entity.Manager;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

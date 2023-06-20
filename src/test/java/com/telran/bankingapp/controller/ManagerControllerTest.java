@@ -50,10 +50,7 @@ class ManagerControllerTest {
         when(managerService.getAllManagers()).thenReturn(managers);
 
         // Perform the GET request
-        mockMvc.perform(get("/managers"))
-                .andExpect(status().isOk())
-                .andExpect(content()
-                        .json(objectMapper.writeValueAsString(managers)));
+        mockMvc.perform(get("/managers")).andExpect(status().isOk()).andExpect(content().json(objectMapper.writeValueAsString(managers)));
     }
 
 
@@ -66,8 +63,8 @@ class ManagerControllerTest {
 
         // Perform the GET request
         mockMvc.perform(MockMvcRequestBuilders.get("/managers/{uuid}", managerId))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
+                .andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers
+                        .jsonPath("$.id").exists());
     }
 
 
@@ -77,15 +74,15 @@ class ManagerControllerTest {
         String managerId = "11cf2217-b9d0-4d58-9ebb-f7f61e7206a6";
         ManagerDTO managerDto = DtoCreator.getValidManagerDto();
         ManagerDTO createdManager = DtoCreator.getValidManagerDto();
-        when(managerService.createManager(any(UUID.class), eq(managerDto)))
-                .thenReturn(createdManager);
+        when(managerService.createManager(any(UUID.class),
+                eq(managerDto))).thenReturn(createdManager);
 
         // Perform the POST request
-        mockMvc.perform(post("/managers/new/{managerId}", managerId)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(managerDto)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists());
+        mockMvc.perform(post("/managers/new/{managerId}",
+                managerId).contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(managerDto)))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers
+                        .jsonPath("$.id").exists());
     }
 
 
@@ -98,9 +95,7 @@ class ManagerControllerTest {
 
         // Perform the POST request
         mockMvc.perform(post("/managers/new")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").exists());
+                .contentType(MediaType.APPLICATION_JSON).content(requestBody))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.id").exists());
     }
 }

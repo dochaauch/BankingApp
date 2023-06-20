@@ -25,7 +25,6 @@
             </column>
         </createTable>
     </changeSet>
-
     <changeSet author="j.jakobson" id="create client table">
         <preConditions onFail="CONTINUE" onFailMessage="Table client already exists">
             <not>
@@ -53,7 +52,6 @@
                                  constraintName="fk_manager_id_client"
                                  referencedTableName="manager" referencedColumnNames="id"/>
     </changeSet>
-
     <changeSet author="j.jakobson" id="create account table 001" >
         <preConditions onFail="CONTINUE" onFailMessage="Table products already exists">
             <not>
@@ -91,7 +89,6 @@
             </column>
         </createTable>
     </changeSet>
-
     <changeSet author="j.jakobson" id="create product table">
         <createTable tableName="product">
             <column name="id" type="binary(16)">
@@ -123,7 +120,6 @@
             </column>
         </createTable>
     </changeSet>
-
     <changeSet author="j.jakobson" id="create agreement table">
         <preConditions onFail="CONTINUE" onFailMessage="Table agreement already exists">
             <not>
@@ -153,8 +149,6 @@
             </column>
         </createTable>
     </changeSet>
-
-
     <changeSet author="j.jakobson" id="create transaction table">
         <preConditions onFail="CONTINUE" onFailMessage="Table transaction already exists">
             <not>
@@ -181,6 +175,4 @@
             </column>
         </createTable>
     </changeSet>
-
-
 </databaseChangeLog>

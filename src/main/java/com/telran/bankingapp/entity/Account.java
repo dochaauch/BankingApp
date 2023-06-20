@@ -65,8 +65,7 @@ public class Account {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Account)) return false;
-        Account account = (Account) o;
+        if (!(o instanceof Account account)) return false;
         return Objects.equals(getId(), account.getId());
     }
 

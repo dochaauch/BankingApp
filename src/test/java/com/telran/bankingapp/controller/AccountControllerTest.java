@@ -54,14 +54,13 @@ class AccountControllerTest {
 
     @Test
     void getAllAccountsTest() throws Exception {
-        List<AccountDTO> accountDTOList =
-                Arrays.asList(DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(),
-                        DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
+        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(),
+                DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
 
         when(accountService.getAllAccounts()).thenReturn(accountDTOList);
 
-        MvcResult mvcResult = mockMvc.perform(get("/accounts"))
-                .andExpect(status().isOk()).andReturn();
+        MvcResult mvcResult = mockMvc.perform(get("/accounts")).andExpect(status().isOk())
+                .andReturn();
 
         String responseBody = mvcResult.getResponse().getContentAsString();
 
@@ -83,16 +82,12 @@ class AccountControllerTest {
         AccountDTO accountDTO = DtoCreator.getValidAccountDto();
         when(accountService.getAccountById(validUuidFromLiquibase)).thenReturn(accountDTO);
 
-        MvcResult mvcResult = mockMvc.perform(get("/accounts/"
-                + validUuidFromLiquibase)).andExpect(status().isOk()).andReturn();
+        MvcResult mvcResult = mockMvc.perform(get("/accounts/" + validUuidFromLiquibase)).andExpect(status().isOk()).andReturn();
 
         String json = mvcResult.getResponse().getContentAsString();
         AccountDTO responseDto = objectMapper.readValue(json, AccountDTO.class);
 
-        String expectedJson = "{\"name\":\"Checking_Account1\"," + "\"type\":\"CURRENT\","
-                + "\"status\":\"ACTIVE\"," + "\"balance\":\"1000.00\"," + "\"currencyCode\":\"EUR\","
-                + "\"clientId\":\"611195b6-c02b-44cd-a8a9-92a85a521262\"," + "\"createdAt\":\"2023-03-14T00:00:00\","
-                + "\"updatedAt\":\"2023-03-14T00:00:00\"," + "\"managerFirstName\":\"John\"}";
+        String expectedJson = "{\"name\":\"Checking_Account1\"," + "\"type\":\"CURRENT\"," + "\"status\":\"ACTIVE\"," + "\"balance\":\"1000.00\"," + "\"currencyCode\":\"EUR\"," + "\"clientId\":\"611195b6-c02b-44cd-a8a9-92a85a521262\"," + "\"createdAt\":\"2023-03-14T00:00:00\"," + "\"updatedAt\":\"2023-03-14T00:00:00\"," + "\"managerFirstName\":\"John\"}";
         assertEquals(expectedJson, json);
     }
 
@@ -100,17 +95,14 @@ class AccountControllerTest {
     @Test
     void getAccountByWrongIdTest() throws Exception {
         String wrongId = "wrong";
-        when(accountService.getAccountById(wrongId))
-                .thenThrow(new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
-        mockMvc.perform(get("/accounts/{uuid}", wrongId))
-                .andExpect(status().is4xxClientError());
+        when(accountService.getAccountById(wrongId)).thenThrow(new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
+        mockMvc.perform(get("/accounts/{uuid}", wrongId)).andExpect(status().is4xxClientError());
     }
 
 
     @Test
     void getAllActiveAccountsTest() throws Exception {
-        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(),
-                DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
+        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
         when(accountService.getAllActiveAccounts()).thenReturn(accountDTOList);
         mockMvc.perform(get("/accounts/active")).andExpect(status().isOk());
     }
@@ -118,8 +110,7 @@ class AccountControllerTest {
 
     @Test
     void getAccountsByProductIdTest() throws Exception {
-        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(),
-                DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
+        List<AccountDTO> accountDTOList = Arrays.asList(DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto(), DtoCreator.getTestAccountDto());
         when(accountService.getAccountsByProudctId("1")).thenReturn(accountDTOList);
         mockMvc.perform(get("/accounts/by_product/1")).andExpect(status().isOk());
     }
@@ -127,9 +118,7 @@ class AccountControllerTest {
 
     @Test
     void getAccountsByWrongProductIdTest() throws Exception {
-        when(accountService.getAccountsByProudctId("wrong"))
-                .thenThrow(new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
-        mockMvc.perform(get("/accounts/product/{productId}", "wrong"))
-                .andExpect(status().is4xxClientError());
+        when(accountService.getAccountsByProudctId("wrong")).thenThrow(new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND));
+        mockMvc.perform(get("/accounts/product/{productId}", "wrong")).andExpect(status().is4xxClientError());
     }
 }

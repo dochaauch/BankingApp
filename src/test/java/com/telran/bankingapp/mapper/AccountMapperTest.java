@@ -25,10 +25,7 @@ class AccountMapperTest {
     void setUp() {
         accountMapper = new AccountMapperImpl();
         // Initialize the accountList with some test data
-        accountList = Arrays.asList(
-                EntityCreator.getAccountEntity(),
-                EntityCreator.getCreateAccountEntity()
-        );
+        accountList = Arrays.asList(EntityCreator.getAccountEntity(), EntityCreator.getCreateAccountEntity());
     }
 
     @Test
@@ -41,7 +38,8 @@ class AccountMapperTest {
 
         // Verify the mapping results
         Assertions.assertEquals(account.getClient().getId().toString(), accountDTO.getClientId());
-        Assertions.assertEquals(account.getClient().getManager().getFirstName(), accountDTO.getManagerFirstName());
+        Assertions.assertEquals(account.getClient().getManager().getFirstName(),
+                accountDTO.getManagerFirstName());
         Assertions.assertEquals(account.getName(), accountDTO.getName());
         Assertions.assertEquals(account.getType().name(), accountDTO.getType());
         Assertions.assertEquals(account.getStatus().name(), accountDTO.getStatus());
@@ -79,21 +77,18 @@ class AccountMapperTest {
     @Test
     void testToDto_NullAccount_ReturnsNull() {
         AccountDTO accountDTO = accountMapper.toDto(null);
-
         Assertions.assertNull(accountDTO);
     }
 
     @Test
     void testAccountsToAccountsDto_NullList_ReturnsNull() {
         List<AccountDTO> accountDTOList = accountMapper.accountsToAccountsDto(null);
-
         Assertions.assertNull(accountDTOList);
     }
 
     @Test
     void testAccountsToAccountsDto_EmptyList_ReturnsEmptyList() {
-        List<AccountDTO> accountDTOList = accountMapper.accountsToAccountsDto(Arrays.asList());
-
+        List<AccountDTO> accountDTOList = accountMapper.accountsToAccountsDto(List.of());
         Assertions.assertNotNull(accountDTOList);
         Assertions.assertTrue(accountDTOList.isEmpty());
     }
@@ -103,10 +98,8 @@ class AccountMapperTest {
     void testToDto_WithCustomValues() {
         // Create an Account instance with custom values for testing
         Account account = EntityCreator.getAccountEntity();
-
         // Convert the Account instance to AccountDTO using the mapper
         AccountDTO accountDTO = accountMapper.toDto(account);
-
         // Verify the mapping results
         Assertions.assertEquals(account.getClient().getId().toString(), accountDTO.getClientId());
         Assertions.assertEquals(account.getClient().getManager().getFirstName(), accountDTO.getManagerFirstName());
@@ -114,9 +107,8 @@ class AccountMapperTest {
         Assertions.assertEquals(account.getType().name(), accountDTO.getType());
         Assertions.assertEquals(account.getStatus().name(), accountDTO.getStatus());
         Assertions.assertEquals(String.valueOf(account.getBalance()), accountDTO.getBalance());
-        Assertions.assertEquals(account.getCurrencyCode().name(), accountDTO.getCurrencyCode());;
+        Assertions.assertEquals(account.getCurrencyCode().name(), accountDTO.getCurrencyCode());
         Assertions.assertEquals(account.getCreatedAt(), accountDTO.getCreatedAt());
         Assertions.assertEquals(account.getUpdatedAt(), accountDTO.getUpdatedAt());
     }
-
 }

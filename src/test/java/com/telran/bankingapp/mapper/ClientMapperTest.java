@@ -25,8 +25,7 @@ class ClientMapperTest {
 
         // Assert that the DTO fields match the Client fields
         Assertions.assertEquals(client.getId().toString(), clientDTO.getId());
-        Assertions.assertEquals(client.getFirstName() + " " + client.getLastName(),
-                clientDTO.getFirstName() + " " + clientDTO.getLastName());
+        Assertions.assertEquals(client.getFirstName() + " " + client.getLastName(), clientDTO.getFirstName() + " " + clientDTO.getLastName());
         Assertions.assertEquals(client.getManager().getId().toString(), clientDTO.getManagerId());
 
         // Assert that the createdAt and updatedAt fields are not null
@@ -72,7 +71,8 @@ class ClientMapperTest {
 
         // Assert that the Client fields match the DTO fields
         Assertions.assertEquals(clientDTO.getId(), client.getId().toString());
-        Assertions.assertEquals(clientDTO.getFirstName() + " " + clientDTO.getLastName(), client.getFirstName() + " " + client.getLastName());
+        Assertions.assertEquals(clientDTO.getFirstName() + " " + clientDTO.getLastName(),
+                client.getFirstName() + " " + client.getLastName());
 
         // Assert that the createdAt and updatedAt fields are not null
         Assertions.assertNotNull(client.getCreatedAt());

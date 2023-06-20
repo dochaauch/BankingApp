@@ -57,6 +57,5 @@
             <column name="created_at">2023-03-14 00:00:00</column>
             <column name="updated_at">2023-03-14 00:00:00</column>
         </insert>
-
     </changeSet>
 </databaseChangeLog>

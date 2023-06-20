@@ -52,10 +52,8 @@ class ClientControllerTest {
         when(clientService.getAllClients()).thenReturn(clients);
 
         // Perform the GET request
-        mockMvc.perform(get("/clients"))
-                .andExpect(status().isOk())
-                .andExpect(content()
-                        .json(objectMapper.writeValueAsString(clients)));
+        mockMvc.perform(get("/clients")).andExpect(status()
+                .isOk()).andExpect(content().json(objectMapper.writeValueAsString(clients)));
     }
 
     @Test
@@ -67,8 +65,7 @@ class ClientControllerTest {
 
         // Perform the GET request
         mockMvc.perform(get("/clients/{uuid}", uuid))
-                .andExpect(status().isOk())
-                .andExpect(content()
+                .andExpect(status().isOk()).andExpect(content()
                         .json(objectMapper.writeValueAsString(client)));
     }
 
@@ -81,9 +78,8 @@ class ClientControllerTest {
         when(clientService.createClient(any(ClientDTO.class))).thenReturn(clientDTO);
 
         mockMvc.perform(post("/clients/new")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(requestBody))
-                .andExpect(status().isOk())
-                .andExpect(content().json(requestBody));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(requestBody)).andExpect(status().isOk()).andExpect(content()
+                .json(requestBody));
     }
 }

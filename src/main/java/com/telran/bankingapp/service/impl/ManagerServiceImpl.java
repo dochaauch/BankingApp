@@ -29,10 +29,6 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDTO getManagerById(String uuidString) {
-        //UUID uuid = UUID.fromString(uuidString);
-        //log.info("get manager", managerRepository.findById(uuid));
-        //log.info("manager {} ", uuid);
-        //return managerMapper.toDTO(managerRepository.findById(uuid).get());
         UUID uuid = UUID.fromString(uuidString);
         log.info("get manager {}", uuid);
         Optional<Manager> managerOptional = managerRepository.findById(uuid);

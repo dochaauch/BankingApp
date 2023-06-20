@@ -97,7 +97,8 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = null;
 
         // Call the method under test and assert exception
-        assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
     }
 
 
@@ -133,7 +134,8 @@ class ManagerServiceImplTest {
         String invalidId = "invalid-id";
 
         // Call the method under test and assert exception
-        assertThrows(IllegalArgumentException.class, () -> service.getManagerById(invalidId));
+        assertThrows(IllegalArgumentException.class,
+                () -> service.getManagerById(invalidId));
     }
 
 
@@ -168,7 +170,8 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = DtoCreator.getNullFirstNameManagerDto();
 
         // Call the method under test and assert exception
-        assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
     }
 
 
@@ -182,7 +185,8 @@ class ManagerServiceImplTest {
         when(managerRepository.findById(uuid)).thenReturn(Optional.empty());
 
         // Call the method under test and assert exception
-        assertThrows(IllegalArgumentException.class, () -> service.getManagerById(validId));
+        assertThrows(IllegalArgumentException.class,
+                () -> service.getManagerById(validId));
     }
 
 
@@ -193,15 +197,18 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = DtoCreator.getValidManagerDto();
 
         // Mock the behavior of managerRepository
-        when(managerRepository.findById(any(UUID.class))).thenReturn(Optional.of(new Manager()));
+        when(managerRepository.findById(any(UUID.class)))
+                .thenReturn(Optional.of(new Manager()));
 
         // Call the method under test and assert the exception
-        assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
 
         // Verify the invocation of private method checkManagerById using ReflectionTestUtils
         assertThrows(
                 IllegalArgumentException.class,
-                () -> ReflectionTestUtils.invokeMethod(service, "checkManagerById", managerId.toString())
+                () -> ReflectionTestUtils.invokeMethod(service,
+                        "checkManagerById", managerId.toString())
         );
     }
 
@@ -213,7 +220,8 @@ class ManagerServiceImplTest {
         String lastName = "Doe";
 
         // Mock the behavior of managerRepository
-        when(managerRepository.findByFirstNameAndLastName(anyString(), anyString())).thenReturn(null);
+        when(managerRepository.findByFirstNameAndLastName(anyString(),
+                anyString())).thenReturn(null);
 
         // Call the private method under test using ReflectionTestUtils
         ReflectionTestUtils.invokeMethod(service, "checkManagerDoesNotExist", firstName, lastName);
@@ -228,13 +236,17 @@ class ManagerServiceImplTest {
 
         // Create a mock existing manager
         Manager existingManager = new Manager();
-        when(managerRepository.findByFirstNameAndLastName(anyString(), anyString())).thenReturn(existingManager);
+        when(managerRepository.findByFirstNameAndLastName(anyString(),
+                anyString())).thenReturn(existingManager);
 
         // Call the private method under test using ReflectionTestUtils and assert the exception
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> ReflectionTestUtils.invokeMethod(service, "checkManagerDoesNotExist", firstName, lastName));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> ReflectionTestUtils.invokeMethod(service, "checkManagerDoesNotExist",
+                        firstName, lastName));
 
         // Verify the exception message
-        assertEquals("A manager with the same firstName and lastName already exists", exception.getMessage());
+        assertEquals("A manager with the same firstName and lastName already exists",
+                exception.getMessage());
     }
 
 
@@ -245,7 +257,8 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = null;
 
         // Call the method under test and assert the exception
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
 
         // Verify the exception message
         assertEquals("Invalid manager data", exception.getMessage());
@@ -259,7 +272,8 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = DtoCreator.getNullFirstNameManagerDto();
 
         // Call the method under test and assert the exception
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
 
         // Verify the exception message
         assertEquals("Invalid manager data", exception.getMessage());
@@ -272,10 +286,10 @@ class ManagerServiceImplTest {
         ManagerDTO managerDTO = DtoCreator.getNullLastNameManagerDto();
 
         // Call the method under test and assert the exception
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> service.createManager(managerId, managerDTO));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> service.createManager(managerId, managerDTO));
 
         // Verify the exception message
         assertEquals("Invalid manager data", exception.getMessage());
     }
-
 }
