@@ -69,4 +69,25 @@ public class DtoCreator {
                 LocalDateTime.of(2023, 03, 14, 0, 0, 0)
         );
     }
+
+
+    public static ManagerDTO getNullFirstNameManagerDto() {
+        return new ManagerDTO("11cf2217-b9d0-4d58-9ebb-f7f61e7206a6",
+                null,
+                "Doe",
+                "ACTIVE",
+                LocalDateTime.of(2023, 03, 14, 0, 0, 0),
+                LocalDateTime.of(2023, 03, 14, 0, 0, 0)
+        );
+    }
+
+    public static ManagerDTO getNullLastNameManagerDto() {
+        return new ManagerDTO("11cf2217-b9d0-4d58-9ebb-f7f61e7206a6",
+                "Jane",
+                null,
+                "ACTIVE",
+                LocalDateTime.of(2023, 03, 14, 0, 0, 0),
+                LocalDateTime.of(2023, 03, 14, 0, 0, 0)
+        );
+    }
 }

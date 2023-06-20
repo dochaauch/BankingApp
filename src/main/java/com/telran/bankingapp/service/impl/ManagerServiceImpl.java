@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -30,10 +29,18 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public ManagerDTO getManagerById(String uuidString) {
+        //UUID uuid = UUID.fromString(uuidString);
+        //log.info("get manager", managerRepository.findById(uuid));
+        //log.info("manager {} ", uuid);
+        //return managerMapper.toDTO(managerRepository.findById(uuid).get());
         UUID uuid = UUID.fromString(uuidString);
-        log.info("get manager", managerRepository.findById(uuid));
-        log.info("manager {} ", uuid);
-        return managerMapper.toDTO(managerRepository.findById(uuid).get());
+        log.info("get manager {}", uuid);
+        Optional<Manager> managerOptional = managerRepository.findById(uuid);
+        if (managerOptional.isPresent()) {
+            return managerMapper.toDTO(managerOptional.get());
+        } else {
+            throw new IllegalArgumentException("Manager not found");
+        }
     }
 
 
