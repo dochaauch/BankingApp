@@ -11,6 +11,8 @@ import java.util.List;
 public interface ClientMapper {
     @Mapping(source = "client.manager.id", target = "managerId")
     ClientDTO toDto(Client client);
+
     List<ClientDTO> clientsToClientsDTO(List<Client> clients);
+
     Client toClient(ClientDTO clientDTO);
 }
