@@ -4,5 +4,5 @@ public enum AccountProductStatus {
     ACTIVE,
     PENDING,
     BLOCKED,
-    REMOVED;
+    REMOVED
 }

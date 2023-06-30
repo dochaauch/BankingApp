@@ -143,9 +143,7 @@ class ClientServiceImplTest {
 
         // Call the private method under test using ReflectionTestUtils
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> {
-            ReflectionTestUtils.invokeMethod(service, "validateTaxCode", taxCode);
-        });
+                () -> ReflectionTestUtils.invokeMethod(service, "validateTaxCode", taxCode));
 
         // Verify the exception message
         assertEquals("This tax code is already used in system", exception.getMessage());

@@ -2,19 +2,13 @@ package com.telran.bankingapp.mapper;
 
 import com.telran.bankingapp.dto.AccountDTO;
 import com.telran.bankingapp.entity.Account;
-import com.telran.bankingapp.entity.enums.AccountStatus;
-import com.telran.bankingapp.entity.enums.AccountType;
 import com.telran.bankingapp.util.EntityCreator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
-
-import com.telran.bankingapp.util.DtoCreator;
 
 class AccountMapperTest {
     private AccountMapper accountMapper;

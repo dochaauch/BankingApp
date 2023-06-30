@@ -72,7 +72,7 @@ class AccountControllerTest {
 
         assertTrue(responseList.size() > 0);
         AccountDTO firstDto = responseList.get(0);
-        assertEquals(firstDto.getCreatedAt().format(formatter), CREATEDAT);
+        assertEquals(CREATEDAT, firstDto.getCreatedAt().format(formatter));
     }
 
 
@@ -85,7 +85,6 @@ class AccountControllerTest {
         MvcResult mvcResult = mockMvc.perform(get("/accounts/" + validUuidFromLiquibase)).andExpect(status().isOk()).andReturn();
 
         String json = mvcResult.getResponse().getContentAsString();
-        AccountDTO responseDto = objectMapper.readValue(json, AccountDTO.class);
 
         String expectedJson = "{\"name\":\"Checking_Account1\"," + "\"type\":\"CURRENT\"," + "\"status\":\"ACTIVE\"," + "\"balance\":\"1000.00\"," + "\"currencyCode\":\"EUR\"," + "\"clientId\":\"611195b6-c02b-44cd-a8a9-92a85a521262\"," + "\"createdAt\":\"2023-03-14T00:00:00\"," + "\"updatedAt\":\"2023-03-14T00:00:00\"," + "\"managerFirstName\":\"John\"}";
         assertEquals(expectedJson, json);

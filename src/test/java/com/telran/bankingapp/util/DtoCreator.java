@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @UtilityClass
 public class DtoCreator {
     public static final String CREATEDAT = "14.03.2023";
-    public static final String CREATEDATISO = "2023-03-14T00:00:00Z";
 
     public static ProductDTO getProductDto() {
         return new ProductDTO("aaf2bc95-1403-4831-b8b5-8969445548ec", "Savings Account");

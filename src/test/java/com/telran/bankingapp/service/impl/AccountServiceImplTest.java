@@ -97,7 +97,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void testGetAccountsByProudctId() {
+    void testGetAccountsByProductId() {
         // Create a dummy product ID
         String productId = "aaf2bc95-1403-4831-b8b5-8969445548ec";
 

@@ -13,9 +13,6 @@ import java.util.UUID;
 public class EntityCreator {
     public static final String accountID = "dce72405-ce50-49d9-9b5b-d6cf0cd61346";
     public static final String clientID = "611195b6-c02b-44cd-a8a9-92a85a521262";
-    public static final String NAME = "TT 89 311045 00234355921201";
-
-    //public static final
 
 
     public static Account getAccountEntity() {
@@ -36,7 +33,6 @@ public class EntityCreator {
     }
 
     public static Account getCreateAccountEntity() {
-        Agreement agreement = getAgreementEntity();
         return new Account(
                 java.util.UUID.fromString(accountID),
                 getClientEntity(),
@@ -71,12 +67,6 @@ public class EntityCreator {
         );
     }
 
-    public static Agreement getAgreementEntity() {
-        Agreement agreement = new Agreement();
-        agreement.setId(UUID.fromString("a67cb66e-31b1-46e0-8510-47871cccbf0c"));
-        agreement.setProduct(getProductEntity());
-        return agreement;
-    }
 
     public static Product getProductEntity() {
         Product product = new Product();
